@@ -1,9 +1,9 @@
 {
   "name": "foos-buddy",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "private": true,
   "scripts": {
+    "heroku-prebuild": "cd client && npm ci",
     "client": "cd client && npm start",
     "build": "cd client && npm run build && npm run build-storybook",
     "storybook": "cd client && npm run storybook",
@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/Susanne1307/foos-buddy.git"
   },
-  "author": "",
+  "author": "Susanne Holocher",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Susanne1307/foos-buddy/issues"
