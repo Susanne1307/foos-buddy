@@ -1,21 +1,21 @@
 import styled from '@emotion/styled';
 
-const LoginInput = styled.input`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const Input = styled.input`
+  outline: none;
+  cursor: pointer;
+`;
+
+export const LoginInput = styled(Input)`
   text-align: center;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: 274px;
+  height: 60px;
   background: white;
   color: white;
   border: 3px #5ce0b9 solid;
   border-radius: 30px;
   box-shadow: 0px 15px 30px grey;
   font-size: 22px;
-  padding: 10px 20px;
-  outline: none;
-  cursor: pointer;
+  padding: 0px 0px;
   ::-webkit-input-placeholder {
     text-align: center;
     color: #b7b7b7;
@@ -26,4 +26,4 @@ const LoginInput = styled.input`
   }
 `;
 
-export default LoginInput;
+export default Input;

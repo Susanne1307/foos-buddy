@@ -6,8 +6,9 @@ export default {
   title: 'Button',
 };
 
-export const Default = () => (
-  <Button width="280px" height="66px" onClick={action('clicked')}>
-    Login
-  </Button>
+export const LoginButton = () => (
+  <Button onClick={action('clicked')}>Login</Button>
+);
+export const SignUpButton = () => (
+  <Button onClick={action('clicked')}>Sign Up</Button>
 );
