@@ -2,11 +2,9 @@ import styled from '@emotion/styled';
 
 // Basic styling for all buttons ${(props) => getFontSize(props.size)};
 const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  text-align: center;
+  width: 280px;
+  height: 66px;
   background: #3f4859;
   color: #fafafa;
   border: 3px #28afb0 solid;
@@ -15,6 +13,7 @@ const Button = styled.button`
   font-size: 26px;
   padding: 10px 20px;
   outline: none;
+
   cursor: pointer;
   &:hover {
     color: #ffffff;
