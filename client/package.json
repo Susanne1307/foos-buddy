@@ -1,6 +1,9 @@
 {
   "name": "foos-buddy",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.16.x"
+  },
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.0.28",
