@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import LoginContainer from './LoginContainer';
-import Logo from '../assets/Logo.svg';
+import logo from '../assets/logo.svg';
 import LoginInput from './LoginInput';
 import Button from './Button';
 import AppLogo from '../components/Logo';
@@ -15,7 +15,7 @@ const LinkToSignUp = styled.div`
 
 export const LoginArea = (props) => (
   <LoginContainer>
-    <AppLogo src={Logo} alt="AppLogo" />
+    <AppLogo src={logo} alt="AppLogo" />
     <LoginInput placeholder="test@example.com" type="email" {...props} />
     <LoginInput placeholder="********" type="password" {...props} />
     <Button>Login</Button>
