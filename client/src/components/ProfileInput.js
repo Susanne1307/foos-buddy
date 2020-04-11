@@ -9,7 +9,7 @@ const ProfileInput = styled(Input)`
   border-bottom: 3px #ce1c57 solid;
   font-size: 18px;
   padding: 0px 0px 10px 10px;
-  ::-webkit-input-placeholder {
+  ::placeholder {
     color: #c7c7c7;
   }
   &:focus {
