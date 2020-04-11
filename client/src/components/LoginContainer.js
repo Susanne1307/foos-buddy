@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Container = styled.section`
+const LoginContainer = styled.section`
   background: none;
   display: flex;
   flex-flow: column nowrap;
@@ -9,4 +9,4 @@ const Container = styled.section`
   max-width: 300px;
 `;
 
-export default Container;
+export default LoginContainer;
