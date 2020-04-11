@@ -11,7 +11,7 @@ const LoginInput = styled(Input)`
   border: 3px #5ce0b9 solid;
   border-radius: 30px;
   box-shadow: 0px 15px 30px grey;
-  ::-webkit-input-placeholder {
+  ::placeholder {
     text-align: center;
     color: #b7b7b7;
   }
