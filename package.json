@@ -45,6 +45,10 @@
     "*.{js,jsx}": "eslint --fix",
     "*.{js,jsx,ts,tsx,md,html,css}": "prettier --write"
   },
+  "cacheDirectories": [
+    "client/node_modules",
+    "node_modules"
+  ],
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
