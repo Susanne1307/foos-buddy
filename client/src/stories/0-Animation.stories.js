@@ -3,6 +3,7 @@ import StartAnimation from '../components/StartAnimation';
 
 export default {
   title: 'Animation',
+  component: 'Animation',
 };
 
 export const TestAnimation = () => <StartAnimation />;
