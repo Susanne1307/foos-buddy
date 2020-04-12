@@ -1,21 +1,8 @@
 import React from 'react';
-import logo from '../src/assets/app_logo.svg';
-import './App.css';
+import StartAnimation from '../src/components/StartAnimation';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        ></a> */}
-      </header>
-    </div>
-  );
+  return <StartAnimation />;
 }
 
 export default App;

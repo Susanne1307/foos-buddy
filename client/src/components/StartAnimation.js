@@ -1,14 +1,17 @@
+import React from 'react';
 import styled from '@emotion/styled';
 import leo1 from '../assets/leo1.svg';
 import leo2 from '../assets/leo2.svg';
+import { Foos, Buddy } from '../components/Title';
 
 export const AnimationContainer = styled.div`
-  background: #f5f5f5;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  padding-top: 100px;
 `;
 
-export const StartAnimationLeft = styled.img`
+export const StartAnimationLeft = styled.div`
+  display: inline-block;
   width: 82px;
   height: 172px;
   position: relative;
@@ -27,18 +30,17 @@ export const StartAnimationLeft = styled.img`
     }
     100% {
       opacity: 1;
-      left: calc(50% - 82px);
+      left: calc(50% - 80px);
       top: 0px;
     }
   }
-  //
 `;
 
-export const StartAnimationRight = styled.img`
+export const StartAnimationRight = styled.div`
+  float: right;
   width: 82px;
   height: 172px;
   position: relative;
-  float: right;
   opacity: 0;
   background-image: url(${leo2});
   animation-name: startanimationright;
@@ -76,7 +78,8 @@ export const StartAnimationTitle = styled.p`
   @keyframes startanimationtitle {
     0% {
       top: 0;
-      font-size: 10rem;
+      font-size: 5rem;
+      opacity: 0;
     }
     20%,
     50%,
@@ -84,7 +87,7 @@ export const StartAnimationTitle = styled.p`
     100% {
       transform: translateY(0);
       opacity: 1;
-      font-size: 6rem;
+      font-size: 4rem;
     }
     40% {
       transform: translateY(-50px);
@@ -97,3 +100,16 @@ export const StartAnimationTitle = styled.p`
     }
   }
 `;
+
+const StartAnimation = () => (
+  <AnimationContainer>
+    <StartAnimationLeft />
+    <StartAnimationRight />
+    <StartAnimationTitle>
+      <Foos>Foos</Foos>
+      <Buddy>Buddy</Buddy>
+    </StartAnimationTitle>
+  </AnimationContainer>
+);
+
+export default StartAnimation;
