@@ -4,6 +4,7 @@ import ProfileInput from '../components/ProfileInput';
 
 export default {
   title: 'Input',
+  component: 'Input',
 };
 
 export const MailLogin = (props) => (
