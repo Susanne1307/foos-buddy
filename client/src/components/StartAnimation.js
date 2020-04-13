@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import leo1 from '../assets/leo1.svg';
 import leo2 from '../assets/leo2.svg';
-import { Foos, Buddy } from '../components/Title';
+import Title from '../components/Title';
 
 export const AnimationContainer = styled.div`
   width: 100%;
@@ -106,8 +106,7 @@ const StartAnimation = () => (
     <StartAnimationLeft />
     <StartAnimationRight />
     <StartAnimationTitle>
-      <Foos>Foos</Foos>
-      <Buddy>Buddy</Buddy>
+      <Title />
     </StartAnimationTitle>
   </AnimationContainer>
 );
