@@ -8,15 +8,15 @@ export const FooterButtonContainer = styled.div`
 
 export const FooterButton = styled.button`
   background: ${(props) => props.theme.colors.primary};
-  border: 1px white solid;
+  border: 1px ${(props) => props.theme.colors.textPrimaryHover} solid;
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  box-shadow: 0px 15px 30px white;
+  box-shadow: 0px 15px 30px ${(props) => props.theme.colors.textPrimaryHover};
   outline: none;
   cursor: pointer;
   &:hover {
-    color: #ffffff;
+    color: ${(props) => props.theme.colors.textPrimaryHover};
     background: ${(props) => props.theme.colors.primaryHover};
   }
   &:active {

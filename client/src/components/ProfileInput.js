@@ -13,7 +13,7 @@ const ProfileInput = styled(Input)`
     color: ${(props) => props.theme.colors.textSecondary};
   }
   &:focus {
-    background-color: #4d5665;
+    background-color: ${(props) => props.theme.colors.ProfileInput};
   }
 `;
 
