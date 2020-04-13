@@ -5,9 +5,9 @@ import FullContainer from './FullContainer';
 const SideNav = styled.div`
   filter: drop-shadow(16px 19px 28px);
   position: absolute;
-  background: #3f4859;
+  background: ${(props) => props.theme.colors.secondary};
   opacity: 0.9;
-  color: #fafafa;
+  color: ${(props) => props.theme.colors.textPrimary};
   padding: 1rem;
   width: calc(60% - 2rem);
   max-width: 400px;
@@ -47,17 +47,16 @@ export const MenuList = styled.ul`
   font-size: 1.5rem;
   padding-inline-start: 20px;
   height: 80%;
-  font-family: 'Montserrat', sans-serif;
 `;
 
 export const MenuListItems = styled.li`
   padding: 20px;
   border: none;
-  border-bottom: 3px #5ce0b9 solid;
+  border-bottom: 3px ${(props) => props.theme.colors.tertiary} solid;
   width: 50%;
   a {
     text-decoration: none;
-    color: white;
+    color: ${(props) => props.theme.colors.textPrimary};
   }
 `;
 

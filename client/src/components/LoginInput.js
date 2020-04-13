@@ -8,12 +8,12 @@ const LoginInput = styled(Input)`
   font-size: 22px;
   padding: 17px 0px;
   margin: 20px 0px;
-  border: 3px #5ce0b9 solid;
+  border: 3px ${(props) => props.theme.colors.tertiary} solid;
   border-radius: 30px;
   box-shadow: 0px 15px 30px grey;
   ::placeholder {
     text-align: center;
-    color: #b7b7b7;
+    color: ${(props) => props.theme.colors.textSecondary};
   }
   &:focus {
     background-color: #ebfff9;

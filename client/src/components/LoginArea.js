@@ -7,7 +7,7 @@ import Button from './Button';
 import AppLogo from '../components/Logo';
 
 const LinkToSignUp = styled.div`
-  color: #28afb0;
+  color: ${(props) => props.theme.colors.primary};
   margin: 5px 0px;
   text-align: center;
   font-size: 20px;
