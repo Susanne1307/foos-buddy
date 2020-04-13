@@ -7,7 +7,7 @@ export const FooterButtonContainer = styled.div`
 `;
 
 export const FooterButton = styled.button`
-  background: #28afb0;
+  background: ${(props) => props.theme.colors.primary};
   border: 1px white solid;
   border-radius: 50%;
   width: 100%;
@@ -17,7 +17,7 @@ export const FooterButton = styled.button`
   cursor: pointer;
   &:hover {
     color: #ffffff;
-    background: #1f8e90;
+    background: ${(props) => props.theme.colors.primaryHover};
   }
   &:active {
     transform: translateY(1px);

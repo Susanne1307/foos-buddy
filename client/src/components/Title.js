@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
 export const Foos = styled.span`
-  color: #3f4859;
+  color: ${(props) => props.theme.colors.secondary};
 `;
 
 export const Buddy = styled.span`
-  color: #28afb0;
+  color: ${(props) => props.theme.colors.primary};
 `;
