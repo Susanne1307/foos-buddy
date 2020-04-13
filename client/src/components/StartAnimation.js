@@ -1,60 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/core';
 import leo1 from '../assets/leo1.svg';
 import leo2 from '../assets/leo2.svg';
 import { Foos, Buddy } from '../components/Title';
-
-const startLeft = keyframes`
-0% {
-  opacity: 0;
-  left: 0px;
-  top: 0px;
-}
-100% {
-  opacity: 1;
-  left: calc(50% - 80px);
-  top: 0px;
-}
-`;
-
-const startRight = keyframes`
-    0% {
-      opacity: 1;
-      right: 0px;
-      top: 0px;
-    }
-    100% {
-      opacity: 1;
-      right: calc(50% - 82px);
-      top: 0px;
-    }
-`;
-
-const bounce = keyframes`
-0% {
-      font-size: 5rem;
-      opacity: 0;
-    }
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-      font-size: 4rem;
-    }
-    40% {
-      transform: translateY(-50px);
-    }
-    60% {
-      transform: translateY(-35px);
-    }
-    90% {
-      transform: translateY(-5px);
-    }
-  }
-`;
+import bounce from '../animations/bounce';
+import { startLeft, startRight } from '../animations/slideIn';
 
 const AnimationContainer = styled.div`
   width: 82px;
