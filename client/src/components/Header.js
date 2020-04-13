@@ -27,8 +27,9 @@ const HeaderItem = styled.input`
 `;
 
 const TitleWrap = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 5vh;
-  padding-top: 5px;
 `;
 
 export const Header = () => (
