@@ -12,11 +12,12 @@ function GlobalStyles() {
           box-sizing: border-box;
         }
         body {
+          display: flex;
+          justify-content: center;
           font-family: 'Montserrat', sans-serif;
           font-size: 16px;
           margin: 0px;
-          background: ${theme.colors};
-          height: 100vh;
+          background: ${theme.colors.basics};
         }
       `}
     />

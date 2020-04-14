@@ -6,4 +6,4 @@ export default {
   component: 'Animation',
 };
 
-export const TestAnimation = () => <StartAnimation />;
+export const Animation = () => <StartAnimation />;
