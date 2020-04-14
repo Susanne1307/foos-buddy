@@ -10,7 +10,8 @@ const LoginContainer = styled.section`
   flex-flow: column nowrap;
   justify-content: center;
   margin-top: 8vh;
-  width: 100%;
+  width: 80vw;
+  max-width: 300px;
 `;
 
 const LinkToSignUp = styled.div`
