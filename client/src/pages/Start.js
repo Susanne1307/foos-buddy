@@ -7,7 +7,7 @@ function Start() {
   clearTimeout(timeOut);
   timeOut = setTimeout(function () {
     window.location = '/login';
-  }, 5000);
+  }, 4500);
   return <StartAnimation />;
 }
 
