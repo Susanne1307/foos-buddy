@@ -2,7 +2,7 @@ import { keyframes } from '@emotion/core';
 
 const bounce = keyframes`
 0% {
-      font-size: 5rem;
+      font-size: 4rem;
       opacity: 0;
     }
     20%,
@@ -11,7 +11,7 @@ const bounce = keyframes`
     100% {
       transform: translateY(0);
       opacity: 1;
-      font-size: 4rem;
+      font-size: 3.5rem;
     }
     40% {
       transform: translateY(-50px);
