@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GlobalStyles from './GlobalStyles';
 import { ThemeProvider } from 'emotion-theming';
 import theme from './theme';
-import Start from '../src/pages/Start';
-import Login from '../src/pages/Login';
+import Start from './pages/Start';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
             </Route>
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
             </Route>
           </Switch>
         </Router>
