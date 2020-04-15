@@ -2,7 +2,8 @@ import React from 'react';
 import SideNavigation from '../components/SideNavigation';
 
 export default {
-  title: 'Menu',
+  title: 'Navigation',
+  component: 'Navigation',
 };
 
-export const NavigationMenu = () => <SideNavigation />;
+export const Navigation = () => <SideNavigation />;

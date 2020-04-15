@@ -1,9 +1,9 @@
 import React from 'react';
-import LoginArea from '../components/LoginArea';
+import LoginForm from '../components/LoginForm';
 
 export default {
   title: 'Login',
-  component: 'LoginArea',
+  component: 'Login',
 };
 
-export const Login = () => <LoginArea />;
+export const Login = () => <LoginForm />;

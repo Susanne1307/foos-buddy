@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
-import Input from '../components/Input';
+import Input from './Input';
 
-const LoginInput = styled(Input)`
+const AuthenticationInput = styled(Input)`
   text-align: center;
   background: ${(props) => props.theme.colors.textPrimaryHover};
   color: ${(props) => props.theme.colors.textPrimaryHover};
   font-size: 22px;
   padding: 17px 0px;
-  margin: 20px 0px;
   border: 3px ${(props) => props.theme.colors.tertiary} solid;
   border-radius: 30px;
   box-shadow: 0px 15px 30px ${(props) => props.theme.colors.shadow};
@@ -21,4 +20,4 @@ const LoginInput = styled(Input)`
   }
 `;
 
-export default LoginInput;
+export default AuthenticationInput;
