@@ -6,4 +6,4 @@ export default {
   component: 'Header',
 };
 
-export const HeaderNavigation = () => <Header />;
+export const HeaderStory = () => <Header />;
