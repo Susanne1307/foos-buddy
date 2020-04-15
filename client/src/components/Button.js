@@ -6,7 +6,6 @@ const Button = styled.button`
   color: ${(props) => props.theme.colors.textPrimary};
   font-size: 26px;
   padding: 15px 20px;
-  margin: 20px 0px;
   border: 3px ${(props) => props.theme.colors.primary} solid;
   border-radius: 30px;
   box-shadow: 0px 15px 30px ${(props) => props.theme.colors.shadow};
