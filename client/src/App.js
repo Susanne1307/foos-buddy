@@ -8,19 +8,21 @@ import Login from '../src/pages/Login';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Start />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-        </Switch>
-      </Router>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Start />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+          </Switch>
+        </Router>
+      </ThemeProvider>
+    </>
   );
 }
 
