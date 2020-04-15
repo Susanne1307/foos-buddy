@@ -32,9 +32,3 @@ client.connect().then(async () => {
     console.log(`Server is running on http://localhost:${port} 🎉`);
   });
 });
-app.get('/api/users', (request, response) => {
-  response.json({
-    title: 'Hello Tester',
-    message: 'Moin',
-  });
-});

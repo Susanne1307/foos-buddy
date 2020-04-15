@@ -6,24 +6,9 @@ import theme from './theme';
 import Start from '../src/pages/Start';
 import Login from '../src/pages/Login';
 
-const [test, setTest] = React.useState(null);
-
-React.useEffect(() => {
-  fetch('/api/test')
-    .then((response) => response.json())
-    .then((result) => {
-      setTest(result);
-    });
-}, []);
-
 function App() {
   return (
     <>
-      {test && (
-        <div>
-          {test.title}: {test.message}
-        </div>
-      )}
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Router>
