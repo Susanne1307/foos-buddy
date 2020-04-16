@@ -4,8 +4,16 @@ const FullContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+  background: ${(props) => {
+    if (props.page === 'start') {
+      return `${props.theme.colors.basic}`;
+    }
+    return `${props.theme.colors.secondary}`;
+  }};
 `;
 
 export default FullContainer;

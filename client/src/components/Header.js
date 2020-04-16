@@ -7,9 +7,10 @@ import Title from '../components/Title';
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: fixed;
-  width: 100%;
-  height: 10%;
+  width: 100vw;
+  height: 10vh;
   top: 0;
   background: ${(props) => props.theme.colors.basic};
   box-shadow: 0px 1px 1px ${(props) => props.theme.colors.shadow};
@@ -17,7 +18,7 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderItem = styled.input`
-  height: 100%;
+  height: 80%;
   outline: none;
   cursor: pointer;
   &:active {
