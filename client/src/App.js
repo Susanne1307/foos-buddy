@@ -6,6 +6,7 @@ import theme from './theme';
 import Start from './pages/Start';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route exact path="/register">
               <Register />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
             </Route>
           </Switch>
         </Router>
