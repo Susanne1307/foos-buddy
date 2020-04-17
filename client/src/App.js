@@ -18,13 +18,13 @@ function App() {
             <Route exact path="/">
               <Start />
             </Route>
-            <Route exact path="/login">
+            <Route path="/login">
               <Login />
             </Route>
-            <Route exact path="/register">
+            <Route path="/register">
               <Register />
             </Route>
-            <Route exact path="/profile">
+            <Route path="/profile">
               <Profile />
             </Route>
           </Switch>
