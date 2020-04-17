@@ -38,7 +38,17 @@ const InputContainer = styled.div`
   width: 80vw;
 `;
 
-const Profile = () => {
+const info = [
+  'Placeholder for name',
+  'Placeholder for DTFB',
+  'Placeholder for ITSF',
+];
+
+const ProfileInfos = () => {
+  return info.map((info) => <ProfileInfo key={info}>{info}</ProfileInfo>);
+};
+
+export default function Profile() {
   return (
     <>
       <FullContainer>
@@ -46,13 +56,9 @@ const Profile = () => {
         <ImageBlur />
         <ProfileImage />
         <InputContainer>
-          <ProfileInfo>Placeholder for name</ProfileInfo>
-          <ProfileInfo>Placeholder for DTFB</ProfileInfo>
-          <ProfileInfo>Placeholder for ITSF</ProfileInfo>
+          <ProfileInfos></ProfileInfos>
         </InputContainer>
       </FullContainer>
     </>
   );
-};
-
-export default Profile;
+}
