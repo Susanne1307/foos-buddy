@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import FullContainer from '../components/FullContainer';
 import ProfileInfo from '../components/ProfileInfo';
 import example from '../assets/profile_example.jpg';
+import ProfileImage from '../components/ProfileImage';
 
 const ImageBlur = styled.div`
   background-image: url(${example});
@@ -16,17 +17,8 @@ const ImageBlur = styled.div`
   position: relative;
 `;
 
-const ProfileImage = styled.div`
-  width: 28vh;
-  height: 28vh;
+const Image = styled(ProfileImage)`
   top: 15.5vh;
-  background: white;
-  border-radius: 50%;
-  border: solid 1px ${(props) => props.theme.colors.shadow};
-  cursor: pointer;
-  position: absolute;
-  background-image: url(${example});
-  background-size: cover;
 `;
 
 const InputContainer = styled.div`
@@ -54,7 +46,7 @@ export default function Profile() {
       <FullContainer>
         <Header />
         <ImageBlur />
-        <ProfileImage />
+        <Image />
         <InputContainer>
           <ProfileInfos></ProfileInfos>
         </InputContainer>
