@@ -16,6 +16,7 @@ function GlobalStyles() {
           font-size: 16px;
           margin: 0px;
           background: ${theme.colors.basics};
+          color: ${theme.colors.textPrimary};
         }
       `}
     />
