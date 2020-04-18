@@ -5,8 +5,7 @@ const FullContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
   margin: auto;
   background: ${(props) => {
     if (props.page === 'start') {
