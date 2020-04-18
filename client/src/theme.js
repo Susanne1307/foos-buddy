@@ -14,6 +14,7 @@ const theme = {
     loginFocus: '#ebfff9',
     loginFocusText: '#7c7c7c',
     profileInput: '#4d5665',
+    navShadow: 'black',
   },
 };
 

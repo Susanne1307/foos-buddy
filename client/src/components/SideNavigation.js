@@ -1,87 +1,102 @@
-import styled from '@emotion/styled';
 import React from 'react';
-import FullContainer from './FullContainer';
+import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+import ProfileImage from '../components/ProfileImage';
+import cross from '../assets/cross.svg';
 
 const SideNav = styled.div`
-  filter: drop-shadow(16px 19px 28px);
-  position: absolute;
+  box-shadow: 16px 19px 28px ${(props) => props.theme.colors.navShadow};
+  position: fixed;
+  z-index: 2;
   background: ${(props) => props.theme.colors.secondary};
-  opacity: 0.9;
-  color: ${(props) => props.theme.colors.textPrimary};
+  opacity: 0.97;
+  bottom: 0;
+  left: 0;
+  top: 0;
   padding: 1rem;
-  width: calc(60% - 2rem);
+  width: 70vw;
   max-width: 400px;
-  height: 100%;
+  height: 100vh;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
-  bottom: 0;
-  top: 0;
+  transition: ease-in-out;
+  display: ${({ showMenu }) => (!showMenu ? 'none' : 'block')};
+`;
 
-  /* animation will be added later */
-  /* display: none; */
-  /* transform: scaleX(0);
-  transform-origin: right; */
-
-  /* & show-menu {
-    display: block;
-    animation: slide-menu 1s ease-in forwards;
+const CloseMenu = styled.img`
+  height: 5vh;
+  padding: 5px;
+  opacity: 0.8;
+  outline: none;
+  cursor: pointer;
+  &:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
   }
-  @keyframes slide-menu {
-    from {
-      transform: scaleX(2);
-    }
-    to {
-      transform: scaleY(1);
-    }
-  }*/
 `;
 
 export const ProfilePictureContainer = styled.div`
-  align-items: center;
-  width: 25%;
-  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 30vh;
 `;
 
 export const MenuList = styled.ul`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
   list-style-type: none;
   font-size: 1.5rem;
-  padding-inline-start: 20px;
-  height: 80%;
+  padding-inline-start: 5%;
+  height: 55vh;
+  width: 80%;
+  margin-top: 3vh;
 `;
 
 export const MenuListItems = styled.li`
-  padding: 20px;
   border: none;
-  border-bottom: 3px ${(props) => props.theme.colors.tertiary} solid;
-  width: 50%;
+  border-bottom: 3px ${(props) => props.theme.colors.quaternary} solid;
+  cursor: pointer;
   a {
     text-decoration: none;
     color: ${(props) => props.theme.colors.textPrimary};
   }
+  &:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+  }
 `;
 
-const SideNavigation = () => {
+const SideNavigation = ({ showMenu, toggleMenu }) => {
   return (
-    <FullContainer>
-      <SideNav>
-        <ProfilePictureContainer></ProfilePictureContainer>
-        <MenuList>
-          <MenuListItems>
-            <a href="/">Overview</a>
-          </MenuListItems>
-          <MenuListItems>
-            <a href="/">Add search</a>
-          </MenuListItems>
-          <MenuListItems>
-            <a href="/">Profile</a>
-          </MenuListItems>
-          <MenuListItems>
-            <a href="/">Logout</a>
-          </MenuListItems>
-        </MenuList>
-      </SideNav>
-    </FullContainer>
+    <SideNav showMenu={showMenu}>
+      <CloseMenu src={cross} onClick={toggleMenu} />
+      <ProfilePictureContainer>
+        <ProfileImage />
+      </ProfilePictureContainer>
+      <MenuList>
+        <MenuListItems>
+          <a href="/overview">Overview</a>
+        </MenuListItems>
+        <MenuListItems>
+          <a href="/search">Add search</a>
+        </MenuListItems>
+        <MenuListItems>
+          <a href="/profile">Profile</a>
+        </MenuListItems>
+        <MenuListItems>
+          <a href="/logout">Logout</a>
+        </MenuListItems>
+      </MenuList>
+    </SideNav>
   );
 };
 
 export default SideNavigation;
+
+SideNavigation.propTypes = {
+  showMenu: PropTypes.bool,
+  onClick: PropTypes.func,
+  toggleMenu: PropTypes.func,
+};
