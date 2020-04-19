@@ -34,21 +34,21 @@ const tournaments = [
 ];
 
 const CreateTournaments = () => {
-  return tournaments.map((tournaments) => (
-    <option key={tournaments}>{tournaments}</option>
+  return tournaments.map((tournament) => (
+    <option key={tournament}>{tournament}</option>
   ));
 };
 
 export default function TournamentDropdown() {
-  const [dropdownValue, setdropdownValue] = React.useState('');
+  const [selectedTournament, setSelectedTournament] = React.useState('');
 
   const handleChange = (event) => {
-    setdropdownValue(event.target.value);
+    setSelectedTournament(event.target.value);
   };
 
   return (
     <DropdownWrapper>
-      <Dropdown value={dropdownValue} onChange={handleChange}>
+      <Dropdown value={selectedTournament} onChange={handleChange}>
         <option value="" disabled>
           Choose Tournament
         </option>
