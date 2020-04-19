@@ -8,6 +8,7 @@ import Start from './pages/Start';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
               <Route path="/profile">
                 <Profile />
               </Route>
+            <Route path="/search">
+              <Search />
+            </Route>
             </Switch>
           </Router>
         </ThemeProvider>

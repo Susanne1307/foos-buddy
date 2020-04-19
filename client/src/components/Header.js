@@ -12,7 +12,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   position: fixed;
   width: 100vw;
-  height: 10vh;
+  height: 65px;
   top: 0;
   background: ${(props) => props.theme.colors.basic};
   box-shadow: 0px 1px 1px ${(props) => props.theme.colors.shadow};

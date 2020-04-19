@@ -13,7 +13,7 @@ const ImageBlur = styled.div`
   height: 40vh;
   width: 100vw;
   filter: blur(4px);
-  margin-top: 10vh;
+  top: 32px;
   position: relative;
 `;
 
@@ -43,8 +43,8 @@ const ProfileInfos = () => {
 export default function Profile() {
   return (
     <>
+      <Header />
       <FullContainer>
-        <Header />
         <ImageBlur />
         <Image />
         <InputContainer>
