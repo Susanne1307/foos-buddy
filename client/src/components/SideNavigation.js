@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { NavigationContext, NavigationProvider } from '../NavigationContext';
+import { NavigationContext } from '../NavigationContext';
 import styled from '@emotion/styled';
 import ProfileImage from '../components/ProfileImage';
 import cross from '../assets/cross.svg';
@@ -75,7 +75,6 @@ const SideNavigation = () => {
     setShowMenu(!showMenu);
   };
   return (
-    <NavigationProvider>
       <SideNav showMenu={showMenu}>
         <CloseMenu src={cross} onClick={toggleMenu} />
         <ProfilePictureContainer>
@@ -96,7 +95,6 @@ const SideNavigation = () => {
           </MenuListItems>
         </MenuList>
       </SideNav>
-    </NavigationProvider>
   );
 };
 
