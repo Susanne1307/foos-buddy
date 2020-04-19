@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { NavigationContext } from '../NavigationContext';
 import styled from '@emotion/styled';
 import menu from '../assets/menu.svg';
 import header_logo from '../assets/header_logo.svg';
@@ -37,7 +38,7 @@ const TitleWrap = styled.div`
 `;
 
 function Header() {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useContext(NavigationContext);
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };

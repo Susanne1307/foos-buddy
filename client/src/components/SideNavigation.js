@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { NavigationContext, NavigationProvider } from '../NavigationContext';
 import styled from '@emotion/styled';
 import ProfileImage from '../components/ProfileImage';
 import cross from '../assets/cross.svg';
@@ -68,28 +69,34 @@ export const MenuListItems = styled.li`
   }
 `;
 
-const SideNavigation = ({ showMenu, toggleMenu }) => {
+const SideNavigation = () => {
+  const [showMenu, setShowMenu] = useContext(NavigationContext);
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
   return (
-    <SideNav showMenu={showMenu}>
-      <CloseMenu src={cross} onClick={toggleMenu} />
-      <ProfilePictureContainer>
-        <ProfileImage />
-      </ProfilePictureContainer>
-      <MenuList>
-        <MenuListItems>
-          <a href="/overview">Overview</a>
-        </MenuListItems>
-        <MenuListItems>
-          <a href="/search">Add search</a>
-        </MenuListItems>
-        <MenuListItems>
-          <a href="/profile">Profile</a>
-        </MenuListItems>
-        <MenuListItems>
-          <a href="/logout">Logout</a>
-        </MenuListItems>
-      </MenuList>
-    </SideNav>
+    <NavigationProvider>
+      <SideNav showMenu={showMenu}>
+        <CloseMenu src={cross} onClick={toggleMenu} />
+        <ProfilePictureContainer>
+          <ProfileImage />
+        </ProfilePictureContainer>
+        <MenuList>
+          <MenuListItems>
+            <a href="/overview">Overview</a>
+          </MenuListItems>
+          <MenuListItems>
+            <a href="/search">Add search</a>
+          </MenuListItems>
+          <MenuListItems>
+            <a href="/profile">Profile</a>
+          </MenuListItems>
+          <MenuListItems>
+            <a href="/logout">Logout</a>
+          </MenuListItems>
+        </MenuList>
+      </SideNav>
+    </NavigationProvider>
   );
 };
 
