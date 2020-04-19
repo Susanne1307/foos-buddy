@@ -16,7 +16,6 @@ const Container = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-size: 1.6rem;
   font-weight: normal;
   text-align: center;
 `;
@@ -93,7 +92,7 @@ const Search = () => {
       <Header />
       <FullContainer>
         <Container>
-          <H1>What are you looking for, ...?</H1>
+          <H1>What are you looking for?</H1>
           <TournamentWrapper>
             <H2>Tournament</H2>
             <TournamentDropdown />
