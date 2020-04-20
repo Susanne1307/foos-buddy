@@ -4,9 +4,16 @@ process.env.MONGO_URL;
 const express = require('express');
 const port = process.env.PORT || 8080;
 const app = express();
+const path = require('path');
 const mongoose = require('mongoose');
 const authRoute = require('./lib/routes/auth');
 const postRoute = require('./lib/routes/posts');
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname, 'client/build/index.html'));
+});
 
 mongoose.connect(
   process.env.MONGO_URL,
