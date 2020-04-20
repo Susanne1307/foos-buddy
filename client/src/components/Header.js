@@ -11,6 +11,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  z-index: 1;
   width: 100vw;
   height: 65px;
   top: 0;
@@ -23,7 +24,6 @@ const HeaderItem = styled.img`
   height: 80%;
   outline: none;
   cursor: pointer;
-  z-index: -1;
   position: relative;
   &:active {
     transform: translateY(1px);

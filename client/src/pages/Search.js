@@ -7,8 +7,9 @@ import SelectionChip from '../components/SelectionChip';
 import Input from '../components/Input';
 
 const Container = styled.div`
-  margin-top: 80px;
+  top: 65px;
   display: flex;
+  position: absolute;
   flex-flow: column nowrap;
   justify-content: space-evenly;
   width: 80vw;
@@ -89,8 +90,8 @@ const Comment = styled(Input)`
 const Search = () => {
   return (
     <>
-      <Header />
       <FullContainer>
+        <Header />
         <Container>
           <H1>What are you looking for?</H1>
           <TournamentWrapper>

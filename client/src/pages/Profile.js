@@ -10,11 +10,10 @@ const ImageBlur = styled.div`
   background-image: url(${example});
   background-size: cover;
   background-repeat: no-repeat;
-  height: 40vh;
+  height: 40%;
   width: 100vw;
   filter: blur(4px);
-  top: 32px;
-  position: relative;
+  margin-top: 65px;
 `;
 
 const Image = styled(ProfileImage)`
@@ -26,7 +25,7 @@ const InputContainer = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-evenly;
-  height: 50vh;
+  height: 50%;
   width: 80vw;
 `;
 
@@ -43,8 +42,8 @@ const ProfileInfos = () => {
 export default function Profile() {
   return (
     <>
-      <Header />
       <FullContainer>
+        <Header />
         <ImageBlur />
         <Image />
         <InputContainer>
