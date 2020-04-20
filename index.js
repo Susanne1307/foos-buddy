@@ -6,6 +6,7 @@ const port = process.env.PORT || 8080;
 const app = express();
 const mongoose = require('mongoose');
 const authRoute = require('./lib/routes/auth');
+const postRoute = require('./lib/routes/posts');
 
 mongoose.connect(
   process.env.MONGO_URL,
@@ -16,6 +17,7 @@ mongoose.connect(
 app.use(express.json());
 
 app.use('/api/user', authRoute);
+app.use('/api/posts', postRoute);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port} 🎉`);
