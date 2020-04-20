@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { NavigationContext } from '../NavigationContext';
 import styled from '@emotion/styled';
 import menu from '../assets/menu.svg';
 import header_logo from '../assets/header_logo.svg';
 import Title from '../components/Title';
+import SideNavigation from './SideNavigation';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -17,10 +19,12 @@ const HeaderContainer = styled.div`
   padding: 5px 10px;
 `;
 
-const HeaderItem = styled.input`
+const HeaderItem = styled.img`
   height: 80%;
   outline: none;
   cursor: pointer;
+  z-index: -1;
+  position: relative;
   &:active {
     transform: translateY(1px);
     filter: saturate(150%);
@@ -33,14 +37,23 @@ const TitleWrap = styled.div`
   font-size: 5vh;
 `;
 
-export const Header = () => (
-  <HeaderContainer>
-    <HeaderItem type="image" src={menu}></HeaderItem>
-    <TitleWrap>
-      <Title />
-    </TitleWrap>
-    <HeaderItem type="image" src={header_logo}></HeaderItem>
-  </HeaderContainer>
-);
+function Header() {
+  const [showMenu, setShowMenu] = useContext(NavigationContext);
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+  return (
+    <>
+      <SideNavigation showMenu={showMenu} />
+      <HeaderContainer>
+        <HeaderItem src={menu} onClick={toggleMenu} />
+        <TitleWrap>
+          <Title />
+        </TitleWrap>
+        <HeaderItem src={header_logo} />
+      </HeaderContainer>
+    </>
+  );
+}
 
 export default Header;
