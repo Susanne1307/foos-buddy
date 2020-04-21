@@ -9,12 +9,7 @@ const mongoose = require('mongoose');
 const authRoute = require('./lib/routes/auth');
 const postRoute = require('./lib/routes/posts');
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-
-app.get('*', (request, response) => {
-  response.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
-
+console.log(process.env.MONGO_URL);
 mongoose.connect(
   process.env.MONGO_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -25,6 +20,12 @@ app.use(express.json());
 
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname, 'client/build/index.html'));
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port} 🎉`);
