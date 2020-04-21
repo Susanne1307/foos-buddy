@@ -1,34 +1,31 @@
 const dotenv = require('dotenv');
 dotenv.config();
 process.env.MONGO_URL;
-
-const { MongoClient } = require('mongodb');
-
 const express = require('express');
-const path = require('path');
-
 const port = process.env.PORT || 8080;
 const app = express();
+const path = require('path');
+const mongoose = require('mongoose');
+const authRoute = require('./lib/routes/auth');
+const postRoute = require('./lib/routes/posts');
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname, 'client/build/index.html'));
 });
 
-const client = new MongoClient(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGO_URL,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => console.log('Successfully connected with mongoose 🙂')
+);
 
-client.connect().then(async () => {
-  console.log('database connected 😍');
-  const db = client.db('FoosBuddy');
-  const users = await db.collection('users');
-  const oneUser = await users.findOne();
-  console.log('Found user', oneUser);
-  await users.insertOne({ firstName: 'Susanne' });
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port} 🎉`);
-  });
+app.use(express.json());
+
+app.use('/api/user', authRoute);
+app.use('/api/posts', postRoute);
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port} 🎉`);
 });
