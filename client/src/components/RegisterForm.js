@@ -4,25 +4,52 @@ import logo from '../assets/app_logo.svg';
 import AuthenticationInput from './AuthenticationInput';
 import Button from './Button';
 import AppLogo from '../components/Logo';
+import createUser from '../api/users';
 
-const RegisterForm = (props) => {
+function RegisterForm() {
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const user = {
+      name,
+      email,
+      password,
+    };
+
+    await createUser(user);
+  }
+
   return (
-    <AuthenticationContainer>
+    <AuthenticationContainer onSubmit={handleSubmit}>
       <AppLogo src={logo} alt="AppLogo" />
-      <AuthenticationInput placeholder="Your e-mail" type="email" {...props} />
+      <AuthenticationInput
+        placeholder="Your name"
+        onChange={(event) => {
+          setName(event.target.value);
+        }}
+      />
+      <AuthenticationInput
+        placeholder="Your e-mail"
+        type="email"
+        onChange={(event) => {
+          setEmail(event.target.value);
+        }}
+      />
       <AuthenticationInput
         placeholder="Your password"
         type="password"
-        {...props}
-      />
-      <AuthenticationInput
-        placeholder="Verify password"
-        type="password"
-        {...props}
+        value={password}
+        onChange={(event) => {
+          setPassword(event.target.value);
+        }}
       />
       <Button>Sign up!</Button>
     </AuthenticationContainer>
   );
-};
+}
 
 export default RegisterForm;
