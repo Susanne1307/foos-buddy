@@ -6,8 +6,8 @@ const port = process.env.PORT || 8080;
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const authRoute = require('./lib/routes/auth');
-const postRoute = require('./lib/routes/posts');
+const authRoutes = require('./lib/routes/auth');
+const postRoutes = require('./lib/routes/posts');
 
 console.log(process.env.MONGO_URL);
 mongoose.connect(
@@ -18,8 +18,8 @@ mongoose.connect(
 
 app.use(express.json());
 
-app.use('/api/user', authRoute);
-app.use('/api/posts', postRoute);
+app.use('/api/users', authRoutes);
+app.use('/api/posts', postRoutes);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
