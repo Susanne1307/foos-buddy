@@ -4,9 +4,12 @@ import logo from '../assets/app_logo.svg';
 import AuthenticationInput from './AuthenticationInput';
 import Button from './Button';
 import AppLogo from '../components/Logo';
-import createUser from '../api/users';
+import { useHistory } from 'react-router-dom';
+import { createUser } from '../api/users';
+import { AccountRequest, StyledRequestLink } from '../components/LoginForm';
 
 function RegisterForm() {
+  const history = useHistory();
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -19,28 +22,35 @@ function RegisterForm() {
       email,
       password,
     };
-
-    await createUser(user);
+    try {
+      const response = await createUser(user);
+      if (response) {
+        alert('Account created 🤗');
+        history.push(`/login`);
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   return (
     <AuthenticationContainer onSubmit={handleSubmit}>
       <AppLogo src={logo} alt="AppLogo" />
       <AuthenticationInput
-        placeholder="Your name"
+        placeholder="your name"
         onChange={(event) => {
           setName(event.target.value);
         }}
       />
       <AuthenticationInput
-        placeholder="Your e-mail"
+        placeholder="your e-mail"
         type="email"
         onChange={(event) => {
           setEmail(event.target.value);
         }}
       />
       <AuthenticationInput
-        placeholder="Your password"
+        placeholder="your password"
         type="password"
         value={password}
         onChange={(event) => {
@@ -48,6 +58,10 @@ function RegisterForm() {
         }}
       />
       <Button>Sign up!</Button>
+      <AccountRequest>
+        or
+        <StyledRequestLink href="/login"> Login</StyledRequestLink>
+      </AccountRequest>
     </AuthenticationContainer>
   );
 }
