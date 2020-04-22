@@ -4,7 +4,7 @@ import Input from './Input';
 const AuthenticationInput = styled(Input)`
   text-align: center;
   background: ${(props) => props.theme.colors.textPrimaryHover};
-  color: ${(props) => props.theme.colors.textPrimaryHover};
+  color: ${(props) => props.theme.colors.loginFocusText};
   font-size: 22px;
   padding: 17px 0px;
   border: 3px ${(props) => props.theme.colors.tertiary} solid;

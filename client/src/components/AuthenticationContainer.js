@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const AuthenticationContainer = styled.section`
+const AuthenticationContainer = styled.form`
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
