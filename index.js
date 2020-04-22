@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const authRoutes = require('./lib/routes/auth');
 const postRoutes = require('./lib/routes/posts');
 
-console.log(process.env.MONGO_URL);
 mongoose.connect(
   process.env.MONGO_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
