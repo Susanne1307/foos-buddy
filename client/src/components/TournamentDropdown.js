@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import useGetTournaments from '../hooks/useGetTournaments';
 
 const DropdownWrapper = styled.div`
   display: flex;
@@ -26,34 +27,27 @@ const Dropdown = styled.select`
   flex: 1;
 `;
 
-const tournaments = [
-  'Leonhart World Series',
-  'German Championship',
-  'World Championship',
-  'Cologne City Championship',
-];
-
-const CreateTournaments = () => {
-  return tournaments.map((tournament) => (
-    <option key={tournament}>{tournament}</option>
-  ));
-};
-
 export default function TournamentDropdown() {
-  const [selectedTournament, setSelectedTournament] = React.useState('');
+  const [selectedTournament, setSelectedTournament] = React.useState([]);
+  const [{ tournaments, error, loading }] = useGetTournaments();
 
   const handleChange = (event) => {
     setSelectedTournament(event.target.value);
   };
 
   return (
-    <DropdownWrapper>
-      <Dropdown value={selectedTournament} onChange={handleChange}>
-        <option value="" disabled>
-          Choose Tournament
-        </option>
-        <CreateTournaments></CreateTournaments>
-      </Dropdown>
-    </DropdownWrapper>
+    <>
+      <DropdownWrapper>
+        <Dropdown value={selectedTournament} onChange={handleChange}>
+          <option disabled>Choose Tournament</option>
+          {loading && '...'}
+          {error && <p>ohoh</p>}
+          {tournaments &&
+            tournaments.map((tournament) => (
+              <option key={tournament}>{tournament}</option>
+            ))}
+        </Dropdown>
+      </DropdownWrapper>
+    </>
   );
 }
