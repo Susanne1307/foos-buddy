@@ -8,6 +8,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const authRoutes = require('./lib/routes/auth');
 const postRoutes = require('./lib/routes/posts');
+const dtfbRoutes = require('./lib/routes/dtfb');
 
 mongoose.connect(
   process.env.MONGO_URL,
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use('/api/users', authRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/dtfb', dtfbRoutes);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
