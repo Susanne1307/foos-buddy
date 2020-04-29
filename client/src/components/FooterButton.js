@@ -1,18 +1,19 @@
+import React from 'react';
 import styled from '@emotion/styled';
 import check from '../assets/check.svg';
 
-export const FooterButtonContainer = styled.div`
+const FooterButtonContainer = styled.div`
   width: 75px;
   height: 75px;
 `;
 
-export const FooterButton = styled.button`
+const RoundButton = styled.button`
   background: ${(props) => props.theme.colors.primary};
   border: 1px ${(props) => props.theme.colors.textPrimaryHover} solid;
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  box-shadow: 0px 15px 30px ${(props) => props.theme.colors.textPrimaryHover};
+  box-shadow: 0px 3px 8px ${(props) => props.theme.colors.textPrimaryHover};
   outline: none;
   cursor: pointer;
   &:hover {
@@ -25,11 +26,21 @@ export const FooterButton = styled.button`
   }
 `;
 
-export const SafeButton = styled(FooterButton)`
+const CheckButton = styled(RoundButton)`
   background-image: url(${check});
   &:hover {
     background-image: url(${check});
   }
 `;
 
-export default FooterButtonContainer;
+const FooterButton = () => {
+  return (
+    <>
+      <FooterButtonContainer>
+        <CheckButton></CheckButton>
+      </FooterButtonContainer>
+    </>
+  );
+};
+
+export default FooterButton;
