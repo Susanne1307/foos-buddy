@@ -17,7 +17,7 @@ const HeaderContainer = styled.div`
   top: 0;
   background: ${(props) => props.theme.colors.basic};
   box-shadow: 0px 1px 1px ${(props) => props.theme.colors.shadow};
-  padding: 5px 10px;
+  padding: 5px 15px;
 `;
 
 const HeaderItem = styled.img`

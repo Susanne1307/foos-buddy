@@ -15,6 +15,8 @@ const theme = {
     loginFocusText: '#7c7c7c',
     profileInput: '#4d5665',
     navShadow: 'black',
+    sideNav: 'linear-gradient(#3F4859, #2E3541)',
+    background: 'linear-gradient(#3F4859, #22262F)',
   },
 };
 
