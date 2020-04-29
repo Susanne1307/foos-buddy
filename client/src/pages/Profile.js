@@ -2,9 +2,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Header from '../components/Header';
 import FullContainer from '../components/FullContainer';
-import ProfileInfo from '../components/ProfileInfo';
 import example from '../assets/profile_example.jpg';
 import ProfileImage from '../components/ProfileImage';
+import PlayerDropdown from '../components/PlayerDropdown';
+import FooterButton from '../components/FooterButton';
 
 const ImageBlur = styled.div`
   background-image: url(${example});
@@ -23,21 +24,15 @@ const Image = styled(ProfileImage)`
 const InputContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  justify-content: space-around;
   align-items: center;
-  justify-content: space-evenly;
   height: 50%;
-  width: 80vw;
+  width: 100vw;
 `;
 
-const info = [
-  'Placeholder for name',
-  'Placeholder for DTFB',
-  'Placeholder for ITSF',
-];
-
-const ProfileInfos = () => {
-  return info.map((info) => <ProfileInfo key={info}>{info}</ProfileInfo>);
-};
+const Welcome = styled.p`
+  font-size: 1.5rem;
+`;
 
 export default function Profile() {
   return (
@@ -47,7 +42,9 @@ export default function Profile() {
         <ImageBlur />
         <Image />
         <InputContainer>
-          <ProfileInfos></ProfileInfos>
+          <Welcome>Who are you?</Welcome>
+          <PlayerDropdown />
+          <FooterButton></FooterButton>
         </InputContainer>
       </FullContainer>
     </>
