@@ -5,6 +5,7 @@ const Button = styled.button`
   background: ${(props) => props.theme.colors.secondary};
   color: ${(props) => props.theme.colors.textPrimary};
   font-size: 26px;
+  font-family: 'Montserrat', sans-serif;
   padding: 15px 20px;
   border: 3px ${(props) => props.theme.colors.primary} solid;
   border-radius: 30px;
