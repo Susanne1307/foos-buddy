@@ -4,19 +4,23 @@ import { NavigationContext } from '../NavigationContext';
 import styled from '@emotion/styled';
 import ProfileImage from '../components/ProfileImage';
 import cross from '../assets/cross.svg';
+import search from '../assets/icon_search.png';
+import overview from '../assets/icon_overview.png';
+import profile from '../assets/icon_profile.png';
+import logout from '../assets/icon_logout.png';
 
 const SideNav = styled.div`
   box-shadow: 16px 19px 28px ${(props) => props.theme.colors.navShadow};
   position: fixed;
   z-index: 2;
-  background: ${(props) => props.theme.colors.secondary};
+  background: ${(props) => props.theme.colors.background};
   opacity: 0.97;
   bottom: 0;
   left: 0;
   top: 0;
   padding: 1rem;
-  width: 70vw;
-  max-width: 400px;
+  width: 80vw;
+  max-width: 350px;
   height: 100vh;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
@@ -48,16 +52,14 @@ export const MenuList = styled.ul`
   flex-flow: column nowrap;
   justify-content: space-evenly;
   list-style-type: none;
-  font-size: 1.5rem;
-  padding-inline-start: 5%;
+  font-size: 1.6rem;
+  padding-inline-start: 10%;
   height: 55vh;
-  width: 80%;
+  width: 100%;
   margin-top: 3vh;
 `;
 
 export const MenuListItems = styled.li`
-  border: none;
-  border-bottom: 3px ${(props) => props.theme.colors.quaternary} solid;
   cursor: pointer;
   a {
     text-decoration: none;
@@ -67,6 +69,14 @@ export const MenuListItems = styled.li`
     transform: translateY(1px);
     filter: saturate(150%);
   }
+`;
+
+const MenuLink = styled.a`
+  margin: 0px;
+  padding-left: 4.5rem;
+  background-image: url(${(props) => props.src});
+  background-repeat: no-repeat;
+  background-size: contain;
 `;
 
 const SideNavigation = () => {
@@ -82,16 +92,24 @@ const SideNavigation = () => {
       </ProfilePictureContainer>
       <MenuList>
         <MenuListItems>
-          <a href="/overview">Overview</a>
+          <MenuLink src={overview} href="/overview">
+            Overview
+          </MenuLink>
         </MenuListItems>
         <MenuListItems>
-          <a href="/search">Add search</a>
+          <MenuLink src={search} href="/search">
+            Add search
+          </MenuLink>
         </MenuListItems>
         <MenuListItems>
-          <a href="/profile">Profile</a>
+          <MenuLink src={profile} href="/profile">
+            Profile
+          </MenuLink>
         </MenuListItems>
         <MenuListItems>
-          <a href="/logout">Logout</a>
+          <MenuLink src={logout} href="/logout">
+            Logout
+          </MenuLink>
         </MenuListItems>
       </MenuList>
     </SideNav>
