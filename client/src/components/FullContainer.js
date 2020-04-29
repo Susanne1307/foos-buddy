@@ -12,7 +12,7 @@ const FullContainer = styled.div`
     if (props.page === 'start') {
       return `none`;
     }
-    return `${props.theme.colors.secondary}`;
+    return `${props.theme.colors.background}`;
   }};
 `;
 

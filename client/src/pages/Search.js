@@ -74,6 +74,7 @@ const PositionInfo = () => {
 };
 
 const Comment = styled(Input)`
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   color: ${(props) => props.theme.colors.textSecondary};
   height: 200px;
@@ -81,6 +82,7 @@ const Comment = styled(Input)`
   margin-bottom: 50px;
   ::placeholder {
     top: 0px;
+    font-family: 'Montserrat', sans-serif;
     color: ${(props) => props.theme.colors.textSecondary};
     font-size: 1.5rem;
     padding-left: 5px;

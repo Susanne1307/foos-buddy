@@ -6,6 +6,7 @@ const AuthenticationInput = styled(Input)`
   background: ${(props) => props.theme.colors.textPrimaryHover};
   color: ${(props) => props.theme.colors.loginFocusText};
   font-size: 22px;
+  font-family: 'Montserrat', sans-serif;
   padding: 17px 0px;
   border: 3px ${(props) => props.theme.colors.tertiary} solid;
   border-radius: 30px;

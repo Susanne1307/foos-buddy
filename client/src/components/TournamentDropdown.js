@@ -16,6 +16,7 @@ const DropdownWrapper = styled.div`
 `;
 
 const Dropdown = styled.select`
+  font-family: 'Montserrat', sans-serif;
   border: none;
   background: none;
   cursor: pointer;
