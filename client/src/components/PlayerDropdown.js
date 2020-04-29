@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React from 'react';
 import { useGetPlayers } from '../hooks/useGetPlayers';
+import PropTypes from 'prop-types';
 
 const Dropdown = styled.select`
   max-width: 90%;
@@ -11,36 +12,39 @@ const Dropdown = styled.select`
   cursor: pointer;
   padding: 10px;
   outline: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: ${(props) => props.theme.colors.textPrimary};
   font-family: 'Montserrat', sans-serif;
 `;
 
-const DropdownList = styled.option`
+const Option = styled.option`
   font-family: 'Montserrat', sans-serif;
 `;
 
-export default function PlayerDropdown() {
-  const [selectedPlayer, setSelectedPlayer] = useState('');
+export default function PlayerDropdown({ value, onChange }) {
   const [{ players, error, loading }] = useGetPlayers();
-  console.log(players);
 
   const handleChange = (event) => {
-    setSelectedPlayer(event.target.value);
+    const player = players.find((player) => player.name === event.target.value);
+    onChange(player);
   };
+
   return (
-    <>
-      <Dropdown value={selectedPlayer} onChange={handleChange}>
-        <DropdownList disabled value=""></DropdownList>
-        {loading && '...'}
-        {error && <p>ohoh</p>}
-        {players &&
-          Object.keys(players).map((player) => (
-            <DropdownList key={player} value={player}>
-              {player}
-            </DropdownList>
-          ))}
-      </Dropdown>
-    </>
+    <Dropdown value={value ? value.name : ''} onChange={handleChange}>
+      <Option disabled value=""></Option>
+      {loading && '...'}
+      {error && <p>ohoh</p>}
+      {players &&
+        players.map((player) => (
+          <Option key={player.name} value={player.name}>
+            {player.name}
+          </Option>
+        ))}
+    </Dropdown>
   );
 }
+
+PlayerDropdown.propTypes = {
+  value: PropTypes.object,
+  onChange: PropTypes.func,
+};
