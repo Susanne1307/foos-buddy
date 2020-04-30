@@ -13,7 +13,7 @@ const ImageBlur = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   height: 40%;
-  width: 100vw;
+  width: 100%;
   filter: blur(10px);
   margin-top: 60px;
 `;
@@ -28,7 +28,6 @@ const InputContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 50%;
-  width: 100vw;
 `;
 
 const Welcome = styled.p`
