@@ -25,3 +25,21 @@ export const startRight = keyframes`
       top: 0px;
     }
 `;
+
+export const menuAnimation = keyframes`
+from {
+transform: translateX(-100%);
+} to {
+  transform: translateX(0);
+}
+`;
+
+export const menuItemAnimation = keyframes`
+from {
+  transform: translateY(60%);
+  opacity: 0
+} to  {
+  transform: translateY(0);
+  opacity: 1;
+}
+`;
