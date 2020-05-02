@@ -8,6 +8,7 @@ import search from '../assets/icon_search.png';
 import overview from '../assets/icon_overview.png';
 import profile from '../assets/icon_profile.png';
 import logout from '../assets/icon_logout.png';
+import { menuAnimation, menuItemAnimation } from '../animations/slideIn';
 
 const SideNav = styled.div`
   box-shadow: 16px 19px 28px ${(props) => props.theme.colors.navShadow};
@@ -24,8 +25,8 @@ const SideNav = styled.div`
   height: 100vh;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
-  transition: ease-in-out;
   display: ${({ showMenu }) => (!showMenu ? 'none' : 'block')};
+  animation: ${menuAnimation} 0.5s ease-in-out forwards;
 `;
 
 const CloseMenu = styled.img`
@@ -61,6 +62,20 @@ export const MenuList = styled.ul`
 
 export const MenuListItems = styled.li`
   cursor: pointer;
+  opacity: 0;
+  :nth-of-type(1) {
+    animation: ${menuItemAnimation} 0.6s ease-in-out forwards 0.3s;
+  }
+  :nth-of-type(2) {
+    animation: ${menuItemAnimation} 0.6s ease-in-out forwards 0.4s;
+  }
+  :nth-of-type(3) {
+    animation: ${menuItemAnimation} 0.6s ease-in-out forwards 0.5s;
+  }
+  :nth-of-type(4) {
+    animation: ${menuItemAnimation} 0.6s ease-in-out forwards 0.6s;
+  }
+
   a {
     text-decoration: none;
     color: ${(props) => props.theme.colors.textPrimary};
