@@ -11,8 +11,8 @@ const DropdownWrapper = styled.div`
   outline: none;
   border: 1px solid ${(props) => props.theme.colors.primary};
   border-radius: 10px;
-  height: 60px;
-  padding: 5px;
+  padding: 12px 0px;
+  overflow: scroll;
 `;
 
 const Dropdown = styled.select`
@@ -20,7 +20,6 @@ const Dropdown = styled.select`
   border: none;
   background: none;
   cursor: pointer;
-  padding: 20px;
   outline: none;
   margin-left: 10px;
   font-size: 1rem;
@@ -40,12 +39,16 @@ export default function TournamentDropdown() {
     <>
       <DropdownWrapper>
         <Dropdown value={selectedTournament} onChange={handleChange}>
-          <option disabled>Choose Tournament</option>
+          <option value="" disabled selected>
+            Choose tournament
+          </option>
           {loading && '...'}
           {error && <p>ohoh</p>}
           {tournaments &&
             tournaments.map((tournament) => (
-              <option key={tournament}>{tournament}</option>
+              <option key={tournament} value={tournament}>
+                {tournament}
+              </option>
             ))}
         </Dropdown>
       </DropdownWrapper>
