@@ -7,7 +7,8 @@ export const createUser = async (user) => {
     body: JSON.stringify(user),
   });
   if (!response.ok) {
-    throw new Error(response.statusText);
+    const errorMessage = await response.text();
+    throw new Error(errorMessage);
   }
   const createdUser = await response.json();
   return createdUser;
@@ -22,8 +23,10 @@ export const loginUser = async (user) => {
     body: JSON.stringify(user),
   });
   if (!response.ok) {
-    throw new Error(response.statusText);
+    const errorMessage = await response.text();
+    throw new Error(errorMessage);
   }
-  const loggedInUser = await response.text();
-  return loggedInUser;
+  const loggedInUserToken = await response.text();
+  localStorage.setItem('loggedInUserToken', loggedInUserToken);
+  return loggedInUserToken;
 };

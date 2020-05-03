@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { NavigationContext } from '../NavigationContext';
 import styled from '@emotion/styled';
@@ -96,8 +97,15 @@ const MenuLink = styled.a`
 
 const SideNavigation = () => {
   const [showMenu, setShowMenu] = useContext(NavigationContext);
+  const history = useHistory();
+
   const toggleMenu = () => {
     setShowMenu(!showMenu);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('loggedInUserToken');
+    history.push(`/logout`);
   };
   return (
     <SideNav showMenu={showMenu}>
@@ -122,7 +130,7 @@ const SideNavigation = () => {
           </MenuLink>
         </MenuListItems>
         <MenuListItems>
-          <MenuLink src={logout} href="/logout">
+          <MenuLink src={logout} onClick={handleLogout}>
             Logout
           </MenuLink>
         </MenuListItems>

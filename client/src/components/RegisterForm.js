@@ -5,12 +5,11 @@ import AuthenticationInput from './AuthenticationInput';
 import Button from './Button';
 import AppLogo from '../components/Logo';
 import { useHistory } from 'react-router-dom';
-import { createUser } from '../api/users';
+import { createUser, loginUser } from '../api/users';
 import { AccountRequest, StyledRequestLink } from '../components/LoginForm';
 
 function RegisterForm() {
   const history = useHistory();
-  const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -18,15 +17,15 @@ function RegisterForm() {
     event.preventDefault();
 
     const user = {
-      name,
       email,
       password,
     };
     try {
       const response = await createUser(user);
       if (response) {
-        alert('Account created 🤗');
-        history.push(`/login`);
+        alert('Account created and logged in 🤗');
+        loginUser(user);
+        history.push(`/profile`);
       }
     } catch (error) {
       alert(error.message);
@@ -36,12 +35,7 @@ function RegisterForm() {
   return (
     <AuthenticationContainer onSubmit={handleSubmit}>
       <AppLogo src={logo} alt="AppLogo" />
-      <AuthenticationInput
-        placeholder="your name"
-        onChange={(event) => {
-          setName(event.target.value);
-        }}
-      />
+
       <AuthenticationInput
         placeholder="your e-mail"
         type="email"
