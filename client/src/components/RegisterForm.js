@@ -5,7 +5,7 @@ import AuthenticationInput from './AuthenticationInput';
 import Button from './Button';
 import AppLogo from '../components/Logo';
 import { useHistory } from 'react-router-dom';
-import { createUser } from '../api/users';
+import { createUser, loginUser } from '../api/users';
 import { AccountRequest, StyledRequestLink } from '../components/LoginForm';
 
 function RegisterForm() {
@@ -23,8 +23,9 @@ function RegisterForm() {
     try {
       const response = await createUser(user);
       if (response) {
-        alert('Account created 🤗');
-        history.push(`/login`);
+        alert('Account created and logged in 🤗');
+        loginUser(user);
+        history.push(`/profile`);
       }
     } catch (error) {
       alert(error.message);
