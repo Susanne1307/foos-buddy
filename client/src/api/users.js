@@ -24,6 +24,7 @@ export const loginUser = async (user) => {
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-  const loggedInUser = await response.text();
-  return loggedInUser;
+  const loggedInUserToken = await response.text();
+  localStorage.setItem('loggedInUserToken', loggedInUserToken);
+  return loggedInUserToken;
 };
