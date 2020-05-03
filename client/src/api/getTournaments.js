@@ -5,6 +5,5 @@ export async function getTournaments() {
   }
   const fetchedTournaments = await response.json();
   const tournaments = fetchedTournaments;
-  console.log(tournaments);
   return tournaments;
 }

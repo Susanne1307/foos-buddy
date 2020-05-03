@@ -12,8 +12,7 @@ const Container = styled.div`
   position: absolute;
   flex-flow: column nowrap;
   justify-content: space-evenly;
-  width: 80vw;
-  max-width: 300px;
+  max-width: 350px;
 `;
 
 const H1 = styled.h1`
