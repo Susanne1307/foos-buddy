@@ -10,7 +10,6 @@ import { AccountRequest, StyledRequestLink } from '../components/LoginForm';
 
 function RegisterForm() {
   const history = useHistory();
-  const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -18,7 +17,6 @@ function RegisterForm() {
     event.preventDefault();
 
     const user = {
-      name,
       email,
       password,
     };
@@ -36,12 +34,7 @@ function RegisterForm() {
   return (
     <AuthenticationContainer onSubmit={handleSubmit}>
       <AppLogo src={logo} alt="AppLogo" />
-      <AuthenticationInput
-        placeholder="your name"
-        onChange={(event) => {
-          setName(event.target.value);
-        }}
-      />
+
       <AuthenticationInput
         placeholder="your e-mail"
         type="email"
