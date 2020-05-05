@@ -15,35 +15,35 @@ import Logout from './pages/Logout';
 function App() {
   return (
     <>
-      <UserProvider>
-        <NavigationProvider>
-          <ThemeProvider theme={theme}>
-            <GlobalStyles />
-            <Router>
-              <Switch>
-                <Route exact path="/">
-                  <Start />
-                </Route>
-                <Route path="/login">
-                  <Login />
-                </Route>
-                <Route path="/register">
-                  <Register />
-                </Route>
+      <NavigationProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <Start />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/register">
+                <Register />
+              </Route>
+              <UserProvider>
                 <Route path="/profile">
                   <Profile />
                 </Route>
                 <Route path="/search">
                   <Search />
                 </Route>
-                <Route path="/logout">
-                  <Logout />
-                </Route>
-              </Switch>
-            </Router>
-          </ThemeProvider>
-        </NavigationProvider>
-      </UserProvider>
+              </UserProvider>
+              <Route path="/logout">
+                <Logout />
+              </Route>
+            </Switch>
+          </Router>
+        </ThemeProvider>
+      </NavigationProvider>
     </>
   );
 }
