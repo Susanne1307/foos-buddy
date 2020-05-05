@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import UserContext from '../contexts/UserContext';
 import styled from '@emotion/styled';
 import Header from '../components/Header';
 import FullContainer from '../components/FullContainer';
@@ -6,6 +7,7 @@ import ProfileImage from '../components/ProfileImage';
 import PlayerDropdown from '../components/PlayerDropdown';
 import FooterButton from '../components/FooterButton';
 import example from '../assets/profile_example.jpg';
+import usePatchUser from '../hooks/usePatchUser';
 
 const ImageBlur = styled.div`
   background-image: url(${(props) => props.src});
@@ -22,7 +24,7 @@ const Image = styled(ProfileImage)`
   top: 15.5vh;
 `;
 
-const InputContainer = styled.div`
+const InputContainer = styled.form`
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
@@ -30,26 +32,31 @@ const InputContainer = styled.div`
   height: 50%;
 `;
 
-const Welcome = styled.p`
-  font-size: 1.5rem;
-`;
-
 export default function Profile() {
+  const [loggedInUserId] = useContext(UserContext);
   const [player, setPlayer] = useState();
-
-  const handlePlayerChange = (player) => {
-    setPlayer(player);
-  };
+  const [{ loading, error }, doPatchUser] = usePatchUser();
+  const [selectedPlayer, setSelectedPlayer] = React.useState(player);
   const playerImageSrc = player ? player.img : example;
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setSelectedPlayer(selectedPlayer);
+    await doPatchUser(loggedInUserId, player);
+  }
+  async function handlePlayerChange(player) {
+    setPlayer(player);
+  }
 
   return (
     <>
       <FullContainer>
         <Header />
+        {loading}
+        {error && 'Error'}
         <ImageBlur src={playerImageSrc} />
         <Image src={playerImageSrc} />
-        <InputContainer>
-          <Welcome>What&apos;s your name?</Welcome>
+        <InputContainer onSubmit={handleSubmit}>
           <PlayerDropdown value={player} onChange={handlePlayerChange} />
           <FooterButton />
         </InputContainer>

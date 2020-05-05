@@ -4,21 +4,21 @@ import { useGetPlayers } from '../hooks/useGetPlayers';
 import PropTypes from 'prop-types';
 
 const Dropdown = styled.select`
-  max-width: 90%;
   border: none;
   border-radius: 0px;
   border-bottom: 3px ${(props) => props.theme.colors.tertiary} solid;
   background: none;
   cursor: pointer;
-  padding: 10px;
   outline: none;
   font-size: 1.5rem;
   color: ${(props) => props.theme.colors.textPrimary};
   font-family: 'Montserrat', sans-serif;
+  text-align-last: center;
 `;
 
 const Option = styled.option`
-  font-family: 'Montserrat', sans-serif;
+  font-family: inherit;
+  font-size: 0.5rem;
 `;
 
 export default function PlayerDropdown({ value, onChange }) {
@@ -31,7 +31,7 @@ export default function PlayerDropdown({ value, onChange }) {
 
   return (
     <Dropdown value={value ? value.name : ''} onChange={handleChange}>
-      <Option disabled value=""></Option>
+      <Option defaultValue>What&apos;s your name?</Option>
       {loading && '...'}
       {error && <p>ohoh</p>}
       {players &&
