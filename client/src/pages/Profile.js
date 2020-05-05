@@ -43,6 +43,7 @@ export default function Profile() {
     event.preventDefault();
     setSelectedPlayer(selectedPlayer);
     await doPatchUser(loggedInUserId, player);
+    alert('Player saved 🙂');
   }
   async function handlePlayerChange(player) {
     setPlayer(player);
