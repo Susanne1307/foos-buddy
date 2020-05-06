@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import UserProvider from './contexts/UserProvider';
 import { NavigationProvider } from './NavigationContext';
 import GlobalStyles from './GlobalStyles';
 import { ThemeProvider } from 'emotion-theming';
@@ -28,12 +29,14 @@ function App() {
               <Route path="/register">
                 <Register />
               </Route>
-              <Route path="/profile">
-                <Profile />
-              </Route>
-              <Route path="/search">
-                <Search />
-              </Route>
+              <UserProvider>
+                <Route path="/profile">
+                  <Profile />
+                </Route>
+                <Route path="/search">
+                  <Search />
+                </Route>
+              </UserProvider>
               <Route path="/logout">
                 <Logout />
               </Route>

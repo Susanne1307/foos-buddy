@@ -25,7 +25,9 @@ function RegisterForm() {
       if (response) {
         alert('Account created and logged in 🤗');
         loginUser(user);
-        history.push(`/profile`);
+        setTimeout(function () {
+          history.push(`/profile`);
+        }, 500);
       }
     } catch (error) {
       alert(error.message);

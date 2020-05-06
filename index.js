@@ -12,7 +12,12 @@ const dtfbRoutes = require('./lib/routes/dtfb');
 
 mongoose.connect(
   process.env.MONGO_URL,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  },
   () => console.log('Successfully connected with mongoose 🙂')
 );
 
