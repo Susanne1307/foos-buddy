@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { NavigationContext } from '../NavigationContext';
+import UserContext from '../contexts/UserContext';
 import styled from '@emotion/styled';
 import ProfileImage from '../components/ProfileImage';
 import cross from '../assets/cross.svg';
@@ -9,7 +10,9 @@ import search from '../assets/icon_search.png';
 import overview from '../assets/icon_overview.png';
 import profile from '../assets/icon_profile.png';
 import logout from '../assets/icon_logout.png';
+import example from '../assets/profile_example.jpg';
 import { menuAnimation, menuItemAnimation } from '../animations/slideIn';
+import { getUser } from '../api/users';
 
 const SideNav = styled.div`
   box-shadow: 16px 19px 28px ${(props) => props.theme.colors.navShadow};
@@ -97,21 +100,30 @@ const MenuLink = styled.a`
 
 const SideNavigation = () => {
   const [showMenu, setShowMenu] = useContext(NavigationContext);
+  const [user, setUser] = useState();
+  const loggedInUserId = useContext(UserContext);
   const history = useHistory();
 
-  const toggleMenu = () => {
+  async function toggleMenu() {
+    try {
+      const user = await getUser(loggedInUserId);
+      setUser(user);
+    } catch (error) {
+      console.error(error);
+    }
     setShowMenu(!showMenu);
-  };
+  }
 
   const handleLogout = () => {
     localStorage.removeItem('loggedInUserToken');
     history.push(`/logout`);
   };
+
   return (
     <SideNav showMenu={showMenu}>
       <CloseMenu src={cross} onClick={toggleMenu} />
       <ProfilePictureContainer>
-        <ProfileImage />
+        <ProfileImage src={user ? user.player.img : example} />
       </ProfilePictureContainer>
       <MenuList>
         <MenuListItems>
