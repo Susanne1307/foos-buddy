@@ -8,6 +8,8 @@ import PlayerDropdown from '../components/PlayerDropdown';
 import FooterButton from '../components/FooterButton';
 import example from '../assets/profile_example.jpg';
 import usePatchUser from '../hooks/usePatchUser';
+import Loader from '../components/Loader';
+import fadeIn from '../animations/fadeIn';
 
 const ImageBlur = styled.div`
   background-image: url(${(props) => props.src});
@@ -22,6 +24,7 @@ const ImageBlur = styled.div`
 
 const Image = styled(ProfileImage)`
   top: 15.5vh;
+  animation: ${fadeIn} 1s ease 1 forwards;
 `;
 
 const InputContainer = styled.form`
@@ -36,6 +39,7 @@ export default function Profile() {
   const loggedInUserId = useContext(UserContext);
   const [player, setPlayer] = useState();
   const [{ error }, doPatchUser] = usePatchUser();
+  const [isLoading, setIsLoading] = React.useState(true);
   const [selectedPlayer, setSelectedPlayer] = React.useState(player);
   const playerImageSrc = player ? player.img : example;
 
@@ -47,6 +51,18 @@ export default function Profile() {
   }
   async function handlePlayerChange(player) {
     setPlayer(player);
+  }
+
+  setTimeout(function () {
+    setIsLoading(false);
+  }, 800);
+
+  if (isLoading) {
+    return (
+      <FullContainer>
+        <Loader />
+      </FullContainer>
+    );
   }
 
   return (

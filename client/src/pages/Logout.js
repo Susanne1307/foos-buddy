@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import styled from '@emotion/styled';
 import FullContainer from '../components/FullContainer';
 import Button from '../components/Button';
+import fadeIn from '../animations/fadeIn';
 
 const LogoutMessage = styled.p`
   font-size: 1.8rem;
@@ -14,24 +15,23 @@ const LogoutMessage = styled.p`
 const LoginAgain = styled(Button)`
   font-size: 1.2rem;
   box-shadow: 0px 1px 2px ${(props) => props.theme.colors.shadow};
-  animation: fadeInAnimation ease 2s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  @keyframes fadeInAnimation {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+  animation: ${fadeIn} 2s ease 1 forwards;
 `;
 
 const Logout = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
   const history = useHistory();
   const handleClick = () => {
     history.push(`/login`);
   };
+
+  setTimeout(function () {
+    setIsLoading(false);
+  }, 800);
+
+  if (isLoading) {
+    return <FullContainer></FullContainer>;
+  }
   return (
     <FullContainer>
       <LogoutMessage>You have been successfully logged out</LogoutMessage>

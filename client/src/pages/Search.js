@@ -5,6 +5,7 @@ import TournamentDropdown from '../components/TournamentDropdown';
 import Header from '../components/Header';
 import SelectionChip from '../components/SelectionChip';
 import Input from '../components/Input';
+import Loader from '../components/Loader';
 
 const Container = styled.div`
   top: 65px;
@@ -89,6 +90,18 @@ const Comment = styled(Input)`
 `;
 
 const Search = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  setTimeout(function () {
+    setIsLoading(false);
+  }, 800);
+
+  if (isLoading) {
+    return (
+      <FullContainer>
+        <Loader />
+      </FullContainer>
+    );
+  }
   return (
     <>
       <FullContainer>
