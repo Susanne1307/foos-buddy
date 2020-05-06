@@ -31,7 +31,9 @@ export default function PlayerDropdown({ value, onChange }) {
 
   return (
     <Dropdown value={value ? value.name : ''} onChange={handleChange}>
-      <Option defaultValue>What&apos;s your name?</Option>
+      <Option hidden value="default">
+        What&apos;s your name?
+      </Option>
       {loading && '...'}
       {error && <p>ohoh</p>}
       {players &&

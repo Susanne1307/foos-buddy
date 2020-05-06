@@ -33,9 +33,9 @@ const InputContainer = styled.form`
 `;
 
 export default function Profile() {
-  const [loggedInUserId] = useContext(UserContext);
+  const loggedInUserId = useContext(UserContext);
   const [player, setPlayer] = useState();
-  const [{ loading, error }, doPatchUser] = usePatchUser();
+  const [{ error }, doPatchUser] = usePatchUser();
   const [selectedPlayer, setSelectedPlayer] = React.useState(player);
   const playerImageSrc = player ? player.img : example;
 
@@ -53,7 +53,6 @@ export default function Profile() {
     <>
       <FullContainer>
         <Header />
-        {loading}
         {error && 'Error'}
         <ImageBlur src={playerImageSrc} />
         <Image src={playerImageSrc} />
