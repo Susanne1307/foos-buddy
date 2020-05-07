@@ -6,9 +6,15 @@ export default function usePostSearch() {
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
 
-  async function doPostSearch(tournament, user) {
+  async function doPostSearch(user, tournament, discipline, position, message) {
     try {
-      const search = await postSearch(tournament, user);
+      const search = await postSearch(
+        user,
+        tournament,
+        discipline,
+        position,
+        message
+      );
       setSearch(search);
     } catch (error) {
       setError(true);

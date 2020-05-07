@@ -14,23 +14,13 @@ const SelectionChip = styled.button`
   cursor: pointer;
   &:active {
     transform: translateY(0.5px);
-    background: ${(props) => props.theme.colors.primary};
-  }
-  ${(props) =>
-    props.clicked
-      ? `
-  background: ${props.theme.colors.primary}
-  `
-      : ''}
-  &:target {
-    background: ${(props) => props.theme.colors.primary};
   }
 `;
 
 export default function Selection(props) {
   return (
     <>
-      <SelectionChip {...props}></SelectionChip>
+      <SelectionChip type="button" {...props}></SelectionChip>
     </>
   );
 }
