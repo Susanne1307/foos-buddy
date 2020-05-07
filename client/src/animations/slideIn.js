@@ -43,3 +43,13 @@ from {
   opacity: 1;
 }
 `;
+
+export const searchListAnimation = keyframes`
+from {
+  transform: translateX(60%);
+  opacity: 0
+} to  {
+  transform: translateX(0);
+  opacity: 1;
+}
+`;

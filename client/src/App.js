@@ -8,6 +8,7 @@ import theme from './theme';
 import Start from './pages/Start';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Overview from './pages/Overview';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
 import Logout from './pages/Logout';
@@ -30,6 +31,9 @@ function App() {
                 <Register />
               </Route>
               <UserProvider>
+                <Route path="/overview">
+                  <Overview />
+                </Route>
                 <Route path="/profile">
                   <Profile />
                 </Route>

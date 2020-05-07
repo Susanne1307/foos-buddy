@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import UserContext from '../contexts/UserContext';
 import styled from '@emotion/styled';
 import FullContainer from '../components/FullContainer';
 import TournamentDropdown from '../components/TournamentDropdown';
@@ -6,8 +8,11 @@ import Header from '../components/Header';
 import SelectionChip from '../components/SelectionChip';
 import Input from '../components/Input';
 import Loader from '../components/Loader';
+import FooterButton from '../components/FooterButton';
+import usePostSearch from '../hooks/usePostSearch';
+import { getUser } from '../api/users';
 
-const Container = styled.div`
+const SearchContainer = styled.form`
   top: 65px;
   display: flex;
   position: absolute;
@@ -90,7 +95,32 @@ const Comment = styled(Input)`
 `;
 
 const Search = () => {
+  const loggedInUserId = useContext(UserContext);
+  const [tournament, setTournament] = React.useState();
+  const [user, setUser] = React.useState();
+  const [{ search }, doPostSearch] = usePostSearch();
   const [isLoading, setIsLoading] = React.useState(true);
+  const history = useHistory();
+
+  const [selectedTournament, setSelectedTournament] = React.useState();
+
+  async function handleTournamentChange(tournament) {
+    setTournament(tournament);
+    try {
+      const user = await getUser(loggedInUserId);
+      setUser(user);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setSelectedTournament(selectedTournament);
+    await doPostSearch(tournament, user);
+    history.push(`/overview`);
+  }
+
   setTimeout(function () {
     setIsLoading(false);
   }, 800);
@@ -106,11 +136,15 @@ const Search = () => {
     <>
       <FullContainer>
         <Header />
-        <Container>
+        <SearchContainer onSubmit={handleSubmit}>
           <H1>What are you looking for?</H1>
           <TournamentWrapper>
             <H2>Tournament</H2>
-            <TournamentDropdown />
+            <TournamentDropdown
+              content={search}
+              value={Object(tournament)}
+              onChange={handleTournamentChange}
+            />
           </TournamentWrapper>
           <ChipWrapper>
             <H2>Discipline</H2>
@@ -121,7 +155,8 @@ const Search = () => {
             <PositionInfo />
           </ChipWrapper>
           <Comment placeholder="Additional comment..."></Comment>
-        </Container>
+          <FooterButton />
+        </SearchContainer>
       </FullContainer>
     </>
   );

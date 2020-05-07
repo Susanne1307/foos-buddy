@@ -5,6 +5,7 @@ import check from '../assets/check.svg';
 const FooterButtonContainer = styled.div`
   width: 75px;
   height: 75px;
+  align-self: center;
 `;
 
 const RoundButton = styled.button`
