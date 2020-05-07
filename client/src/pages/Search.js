@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import UserContext from '../contexts/UserContext';
 import styled from '@emotion/styled';
 import FullContainer from '../components/FullContainer';
@@ -99,6 +100,7 @@ const Search = () => {
   const [user, setUser] = React.useState();
   const [{ search }, doPostSearch] = usePostSearch();
   const [isLoading, setIsLoading] = React.useState(true);
+  const history = useHistory();
 
   const [selectedTournament, setSelectedTournament] = React.useState();
 
@@ -116,6 +118,7 @@ const Search = () => {
     event.preventDefault();
     setSelectedTournament(selectedTournament);
     await doPostSearch(tournament, user);
+    history.push(`/overview`);
   }
 
   setTimeout(function () {
