@@ -92,7 +92,6 @@ const Search = () => {
       console.error(error);
     }
   }
-  console.log(message);
   async function handleSubmit(event) {
     event.preventDefault();
     setSelectedTournament(selectedTournament);
