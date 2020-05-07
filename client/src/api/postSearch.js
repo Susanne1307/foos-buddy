@@ -1,5 +1,5 @@
 export const postSearch = async (tournament, user) => {
-  const response = await fetch('/api/search', {
+  const response = await fetch('/api/searches', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

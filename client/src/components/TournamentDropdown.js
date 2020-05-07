@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import PropTypes from 'prop-types';
 import useGetTournaments from '../hooks/useGetTournaments';
 
 const DropdownWrapper = styled.div`
@@ -27,19 +28,21 @@ const Dropdown = styled.select`
   flex: 1;
 `;
 
-export default function TournamentDropdown() {
-  const [selectedTournament, setSelectedTournament] = React.useState([]);
+export default function TournamentDropdown({ value, onChange }) {
   const [{ tournaments, error, loading }] = useGetTournaments();
 
   const handleChange = (event) => {
-    setSelectedTournament(event.target.value);
+    const tournament = tournaments.find(
+      (tournament) => tournament === event.target.value
+    );
+    onChange(tournament);
   };
 
   return (
     <>
       <DropdownWrapper>
-        <Dropdown value={selectedTournament} onChange={handleChange}>
-          <option value="" disabled selected>
+        <Dropdown value={value ? value : ''} onChange={handleChange}>
+          <option hidden value="default">
             Choose tournament
           </option>
           {loading && '...'}
@@ -55,3 +58,8 @@ export default function TournamentDropdown() {
     </>
   );
 }
+
+TournamentDropdown.propTypes = {
+  value: PropTypes.object,
+  onChange: PropTypes.func,
+};
