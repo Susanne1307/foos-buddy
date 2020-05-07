@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import UserContext from '../contexts/UserContext';
 import styled from '@emotion/styled';
@@ -11,6 +11,7 @@ import Loader from '../components/Loader';
 import FooterButton from '../components/FooterButton';
 import usePostSearch from '../hooks/usePostSearch';
 import { getUser } from '../api/users';
+import theme from '../theme';
 
 const SearchContainer = styled.form`
   top: 65px;
@@ -44,41 +45,7 @@ const ChipWrapper = styled.div`
   margin-bottom: 30px;
 `;
 
-const disciplines = [
-  'Open Doubles',
-  'Women Doubles',
-  'Senior Doubles',
-  'Junior Doubles',
-  'Mixed',
-];
-
-const DisciplineInfo = () => {
-  // const [answer, setAnswer] = useState(null);
-  return disciplines.map((discipline) => (
-    <SelectionChip
-      key={discipline}
-      // onChange={(event) => setAnswer(event.target.value)}
-    >
-      {discipline}
-    </SelectionChip>
-  ));
-};
-
-const positions = ['Forward', 'Goalie', 'flexible', 'whatever'];
-
-const PositionInfo = () => {
-  // const [answer, setAnswer] = useState(null);
-  return positions.map((position) => (
-    <SelectionChip
-      key={position}
-      // onChange={(event) => setAnswer(event.target.value)}
-    >
-      {position}
-    </SelectionChip>
-  ));
-};
-
-const Comment = styled(Input)`
+const Message = styled(Input)`
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   color: ${(props) => props.theme.colors.textSecondary};
@@ -94,15 +61,27 @@ const Comment = styled(Input)`
   }
 `;
 
+const disciplines = [
+  'Open Doubles',
+  'Women Doubles',
+  'Mixed',
+  'Senior Doubles',
+  'Junior Doubles',
+];
+
+const positions = ['Forward', 'Goalie', 'whatever'];
+
 const Search = () => {
   const loggedInUserId = useContext(UserContext);
-  const [tournament, setTournament] = React.useState();
-  const [user, setUser] = React.useState();
+  const [tournament, setTournament] = useState();
+  const [selectedTournament, setSelectedTournament] = useState('');
+  const [selectedDiscipline, setSelectedDiscipline] = useState('');
+  const [selectedPosition, setSelectedPosition] = useState('');
+  const [message, setMessage] = useState('');
+  const [user, setUser] = useState();
   const [{ search }, doPostSearch] = usePostSearch();
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
-
-  const [selectedTournament, setSelectedTournament] = React.useState();
 
   async function handleTournamentChange(tournament) {
     setTournament(tournament);
@@ -113,11 +92,20 @@ const Search = () => {
       console.error(error);
     }
   }
-
+  console.log(message);
   async function handleSubmit(event) {
     event.preventDefault();
     setSelectedTournament(selectedTournament);
-    await doPostSearch(tournament, user);
+    setSelectedDiscipline(selectedDiscipline);
+    setSelectedPosition(selectedPosition);
+    setMessage(message);
+    await doPostSearch(
+      user,
+      tournament,
+      selectedDiscipline,
+      selectedPosition,
+      message
+    );
     history.push(`/overview`);
   }
 
@@ -132,6 +120,7 @@ const Search = () => {
       </FullContainer>
     );
   }
+
   return (
     <>
       <FullContainer>
@@ -148,13 +137,54 @@ const Search = () => {
           </TournamentWrapper>
           <ChipWrapper>
             <H2>Discipline</H2>
-            <DisciplineInfo />
+            {disciplines &&
+              disciplines.map((discipline) => (
+                <SelectionChip
+                  name={discipline}
+                  value={discipline}
+                  key={discipline}
+                  onClick={() => {
+                    setSelectedDiscipline(discipline);
+                  }}
+                  style={{
+                    background:
+                      selectedDiscipline === discipline
+                        ? theme.colors.primary
+                        : 'none',
+                  }}
+                >
+                  {discipline}
+                </SelectionChip>
+              ))}
           </ChipWrapper>
           <ChipWrapper>
             <H2>Wanted position</H2>
-            <PositionInfo />
+            {positions &&
+              positions.map((position) => (
+                <SelectionChip
+                  name={position}
+                  value={position}
+                  key={position}
+                  onClick={() => {
+                    setSelectedPosition(position);
+                  }}
+                  style={{
+                    background:
+                      selectedPosition === position
+                        ? theme.colors.primary
+                        : 'none',
+                  }}
+                >
+                  {position}
+                </SelectionChip>
+              ))}
           </ChipWrapper>
-          <Comment placeholder="Additional comment..."></Comment>
+          <Message
+            onChange={(event) => {
+              setMessage(event.target.value);
+            }}
+            placeholder="Additional comment..."
+          ></Message>
           <FooterButton />
         </SearchContainer>
       </FullContainer>
