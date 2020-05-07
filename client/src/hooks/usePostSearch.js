@@ -1,7 +1,7 @@
 import React from 'react';
 import postSearch from '../api/postSearch';
 
-export default function usePost() {
+export default function usePostSearch() {
   const [search, setSearch] = React.useState(null);
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
@@ -16,10 +16,6 @@ export default function usePost() {
       setLoading(false);
     }
   }
-
-  React.useEffect(() => {
-    doPostSearch();
-  }, []);
 
   return [{ search, error, loading }, doPostSearch];
 }
