@@ -36,11 +36,11 @@ const SearchSection = styled.div`
     animation: ${searchListAnimation} 0.8s ease forwards 0.9s;
   }
   :nth-of-type(5) {
-    animation: ${searchListAnimation} 0.8s ease forwards 0.11s;
+    animation: ${searchListAnimation} 0.8s ease forwards 1.1s;
     background: ${(props) => props.theme.colors.secondary};
   }
   :nth-of-type(6) {
-    animation: ${searchListAnimation} 0.8s ease forwards 0.13s;
+    animation: ${searchListAnimation} 0.8s ease forwards 1.3s;
   }
 `;
 
