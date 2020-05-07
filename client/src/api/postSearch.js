@@ -1,10 +1,16 @@
-export const postSearch = async (tournament, user) => {
+export const postSearch = async (
+  user,
+  tournament,
+  discipline,
+  position,
+  message
+) => {
   const response = await fetch('/api/searches', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ tournament, user }),
+    body: JSON.stringify({ user, tournament, discipline, position, message }),
   });
   if (!response.ok) {
     const errorMessage = await response.text();
