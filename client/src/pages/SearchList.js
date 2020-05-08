@@ -59,7 +59,7 @@ const SearchInfos = styled.div`
 `;
 
 const SearchPicture = styled.img`
-  border-radius: 10%;
+  border-radius: 15%;
   align-self: center;
   width: 20%;
 `;
@@ -80,6 +80,10 @@ const Tournament = styled.div`
 const FurtherDetails = styled.div`
   text-indent: 2rem;
   margin: 2px;
+`;
+
+const Keywords = styled.span`
+  color: ${(props) => props.theme.colors.primary};
 `;
 
 const Message = styled.div`
@@ -117,8 +121,12 @@ export default function Overview() {
               <SearchInfos>
                 <Name>{search.user ? search.user.player.name : ''}</Name>
                 <Tournament src={date_icon}>{search.tournament}</Tournament>
-                <FurtherDetails>- {search.discipline}</FurtherDetails>
-                <FurtherDetails>- {search.position}</FurtherDetails>
+                <FurtherDetails>
+                  <Keywords>-</Keywords> {search.discipline}
+                </FurtherDetails>
+                <FurtherDetails>
+                  <Keywords>-</Keywords> {search.position}
+                </FurtherDetails>
                 <Message>{search.message}</Message>
               </SearchInfos>
             </SearchSection>

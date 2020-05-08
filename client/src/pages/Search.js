@@ -6,9 +6,8 @@ import FullContainer from '../components/FullContainer';
 import TournamentDropdown from '../components/TournamentDropdown';
 import Header from '../components/Header';
 import SelectionChip from '../components/SelectionChip';
-import Input from '../components/Input';
 import Loader from '../components/Loader';
-import FooterButton from '../components/FooterButton';
+import { FooterButtonContainer, CheckButton } from '../components/FooterButton';
 import usePostSearch from '../hooks/usePostSearch';
 import { getUser } from '../api/users';
 import theme from '../theme';
@@ -18,8 +17,10 @@ const SearchContainer = styled.form`
   display: flex;
   position: absolute;
   flex-flow: column nowrap;
-  justify-content: space-evenly;
   max-width: 350px;
+  > * {
+    margin-bottom: 25px;
+  }
 `;
 
 const H1 = styled.h1`
@@ -36,22 +37,22 @@ const H2 = styled.h2`
 const TournamentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
 `;
 
 const ChipWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
-  margin-bottom: 30px;
 `;
 
-const Message = styled(Input)`
+const Message = styled.textarea`
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  color: ${(props) => props.theme.colors.textSecondary};
-  height: 200px;
-  padding: 5px;
-  margin-bottom: 50px;
+  font-size: 1.1rem;
+  color: ${(props) => props.theme.colors.primary};
+  height: 150px;
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
   ::placeholder {
     top: 0px;
     font-family: 'Montserrat', sans-serif;
@@ -105,7 +106,7 @@ const Search = () => {
       selectedPosition,
       message
     );
-    history.push(`/overview`);
+    history.push(`/searchlist`);
   }
 
   setTimeout(function () {
@@ -184,7 +185,9 @@ const Search = () => {
             }}
             placeholder="Additional comment..."
           ></Message>
-          <FooterButton />
+          <FooterButtonContainer>
+            <CheckButton />
+          </FooterButtonContainer>
         </SearchContainer>
       </FullContainer>
     </>

@@ -1,11 +1,11 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import check from '../assets/check.svg';
 
-const FooterButtonContainer = styled.div`
+export const FooterButtonContainer = styled.div`
   width: 75px;
   height: 75px;
   align-self: center;
+  margin: 10px 0px 35px 0px;
 `;
 
 const RoundButton = styled.button`
@@ -22,26 +22,19 @@ const RoundButton = styled.button`
     background: ${(props) => props.theme.colors.primaryHover};
   }
   &:active {
-    transform: translateY(1px);
+    transform: translateY(10px);
     filter: saturate(150%);
   }
 `;
 
-const CheckButton = styled(RoundButton)`
+export const CheckButton = styled(RoundButton)`
   background-image: url(${check});
   &:hover {
     background-image: url(${check});
   }
+  ${(props) =>
+    props.disabled
+      ? `
+  opacity: 10%`
+      : ''};
 `;
-
-const FooterButton = () => {
-  return (
-    <>
-      <FooterButtonContainer>
-        <CheckButton></CheckButton>
-      </FooterButtonContainer>
-    </>
-  );
-};
-
-export default FooterButton;

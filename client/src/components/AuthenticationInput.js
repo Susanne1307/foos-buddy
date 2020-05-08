@@ -11,6 +11,10 @@ const AuthenticationInput = styled(Input)`
   border: 3px ${(props) => props.theme.colors.tertiary} solid;
   border-radius: 30px;
   box-shadow: 0px 15px 30px ${(props) => props.theme.colors.shadow};
+  input:-webkit-autofill {
+    color: ${(props) => props.theme.colors.loginFocusText};
+    font-size: 22px;
+  }
   ::placeholder {
     text-align: center;
     color: ${(props) => props.theme.colors.textSecondary};

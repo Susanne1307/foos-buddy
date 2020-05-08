@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 const MainLoader = styled.div`
   display: inline-block;
-  position: relative;
+  position: fixed;
   width: 80px;
   height: 80px;
   div {
@@ -11,7 +11,7 @@ const MainLoader = styled.div`
     position: absolute;
     left: 8px;
     width: 16px;
-    background: ${(props) => props.theme.colors.loginFocus};
+    background: ${(props) => props.theme.colors.primary};
     animation: loading 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   }
   div:nth-of-type(1) {
