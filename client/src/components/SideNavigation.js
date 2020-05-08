@@ -129,8 +129,8 @@ const SideNavigation = () => {
       </ProfilePictureContainer>
       <MenuList>
         <MenuListItems>
-          <MenuLink src={overview} href="/overview">
-            Overview
+          <MenuLink src={overview} href="/searchlist">
+            Search list
           </MenuLink>
         </MenuListItems>
         <MenuListItems>
