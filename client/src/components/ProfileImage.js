@@ -4,7 +4,6 @@ const ProfileImage = styled.div`
   width: 185px;
   height: 185px;
   border-radius: 50%;
-  border: solid 1px ${(props) => props.theme.colors.shadow};
   cursor: pointer;
   position: absolute;
   background-image: url(${(props) => props.src});

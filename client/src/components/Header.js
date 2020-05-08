@@ -12,7 +12,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   position: fixed;
   z-index: 1;
-  width: 100vw;
+  width: 100%;
   height: 65px;
   top: 0;
   background: ${(props) => props.theme.colors.basic};
