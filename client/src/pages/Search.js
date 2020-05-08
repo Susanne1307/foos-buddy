@@ -106,7 +106,7 @@ const Search = () => {
       selectedPosition,
       message
     );
-    history.push(`/overview`);
+    history.push(`/searchlist`);
   }
 
   setTimeout(function () {

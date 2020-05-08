@@ -24,7 +24,7 @@ const SideNav = styled.div`
   left: 0;
   top: 0;
   padding: 1rem;
-  width: 80vw;
+  width: 85%;
   max-width: 350px;
   height: 100vh;
   border-top-right-radius: 50px;
@@ -135,7 +135,7 @@ const SideNavigation = () => {
         </MenuListItems>
         <MenuListItems>
           <MenuLink src={search} href="/search">
-            Add search
+            Create search
           </MenuLink>
         </MenuListItems>
         <MenuListItems>
