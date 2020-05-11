@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 const ProfileImage = styled.div`
-  width: 185px;
-  height: 185px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   cursor: pointer;
   position: absolute;

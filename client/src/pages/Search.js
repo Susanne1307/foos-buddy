@@ -48,7 +48,7 @@ const Message = styled.textarea`
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   color: ${(props) => props.theme.colors.primary};
-  height: 150px;
+  height: 80px;
   padding: 10px;
   outline: none;
   border-radius: 10px;
@@ -111,7 +111,7 @@ const Search = () => {
 
   setTimeout(function () {
     setIsLoading(false);
-  }, 800);
+  }, 600);
 
   if (isLoading) {
     return (

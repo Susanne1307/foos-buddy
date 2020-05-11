@@ -17,6 +17,8 @@ function GlobalStyles() {
           margin: 0px;
           background: ${theme.colors.basics};
           color: ${theme.colors.textPrimary};
+          height: 100%;
+          width: 100%;
         }
       `}
     />
