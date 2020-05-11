@@ -32,7 +32,6 @@ function RegisterForm() {
     try {
       const response = await createUser(user);
       if (response) {
-        alert('Account created and logged in 🤗');
         loginUser(user);
         setCreateAccount(!createAccount);
         setTimeout(function () {
