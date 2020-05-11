@@ -83,7 +83,7 @@ export default function Profile() {
 
   setTimeout(function () {
     setIsLoading(false);
-  }, 800);
+  }, 600);
 
   if (isLoading) {
     return (
