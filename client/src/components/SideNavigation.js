@@ -119,6 +119,7 @@ const SideNavigation = () => {
     localStorage.removeItem('loggedInUserToken');
     setTimeout(function () {
       history.push(`/logout`);
+      setShowMenu(!showMenu);
     }, 500);
   };
 
