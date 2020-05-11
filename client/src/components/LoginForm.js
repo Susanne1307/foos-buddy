@@ -22,6 +22,7 @@ export const StyledRequestLink = styled.a`
   margin: 5px 0px;
   text-align: center;
   font-size: 1.3rem;
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const LoginForm = () => {
