@@ -7,10 +7,10 @@ import FullContainer from '../components/FullContainer';
 import ProfileImage from '../components/ProfileImage';
 import PlayerDropdown from '../components/PlayerDropdown';
 import { FooterButtonContainer, CheckButton } from '../components/FooterButton';
-import example from '../assets/profile_example.jpg';
 import usePatchUser from '../hooks/usePatchUser';
 import Loader from '../components/Loader';
 import fadeIn from '../animations/fadeIn';
+import useGetUserById from '../hooks/useGetUserById';
 
 const ImageBlur = styled.div`
   background-image: url(${(props) => props.src});
@@ -61,7 +61,7 @@ export default function Profile() {
   const [selectedPlayer, setSelectedPlayer] = useState(player);
   const [clickable, setClickable] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const playerImageSrc = player ? player.img : example;
+  const [{ user, srcError, srcLoading }] = useGetUserById(loggedInUserId);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -69,6 +69,7 @@ export default function Profile() {
     await doPatchUser(loggedInUserId, player);
     showWelcome();
   }
+
   function handlePlayerChange(player) {
     setPlayer(player);
     setClickable(true);
@@ -97,8 +98,10 @@ export default function Profile() {
     <>
       <FullContainer>
         <Header />
-        <ImageBlur src={playerImageSrc} />
-        <Image src={playerImageSrc} />
+        {srcLoading && <Loader />}
+        {srcError && 'Error'}
+        <ImageBlur src={player ? player.img : user.player.img} />
+        <Image src={player ? player.img : user.player.img} />
         {loading && <Loader />}
         {error && 'Error'}
         <InputContainer onSubmit={handleSubmit}>
