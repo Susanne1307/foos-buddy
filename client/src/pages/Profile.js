@@ -8,10 +8,10 @@ import FullContainer from '../components/FullContainer';
 import ProfileImage from '../components/ProfileImage';
 import PlayerDropdown from '../components/PlayerDropdown';
 import { FooterButtonContainer, CheckButton } from '../components/FooterButton';
-import example from '../assets/profile_example.jpg';
 import usePatchUser from '../hooks/usePatchUser';
 import Loader from '../components/Loader';
 import fadeIn from '../animations/fadeIn';
+import useGetUserById from '../hooks/useGetUserById';
 import {
   SearchAnimationLeft,
   SearchAnimationRight,
@@ -95,10 +95,9 @@ export default function Profile() {
   const [selectedPlayer, setSelectedPlayer] = useState(player);
   const [clickable, setClickable] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [{ user, srcError, srcLoading }] = useGetUserById(loggedInUserId);
   const [animated, setAnimated] = useState(false);
   const history = useHistory();
-
-  const playerImageSrc = player ? player.img : example;
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -142,8 +141,10 @@ export default function Profile() {
     <>
       <FullContainer>
         <Header />
-        <ImageBlur src={playerImageSrc} />
-        <Image src={playerImageSrc} />
+        {srcLoading && <Loader />}
+        {srcError && 'Error'}
+        <ImageBlur src={player ? player.img : user.player.img} />
+        <Image src={player ? player.img : user.player.img} />
         {loading && <Loader />}
         {error && 'Error'}
         <InputContainer onSubmit={handleSubmit}>

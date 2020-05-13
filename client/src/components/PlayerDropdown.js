@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import UserContext from '../contexts/UserContext';
 import { useGetPlayers } from '../hooks/useGetPlayers';
+import useGetUserById from '../hooks/useGetUserById';
 import PropTypes from 'prop-types';
 import arrow from '../assets/arrow.svg';
 
@@ -27,6 +29,8 @@ const Option = styled.option`
 
 export default function PlayerDropdown({ value, onChange }) {
   const [{ players, error, loading }] = useGetPlayers();
+  const loggedInUserId = React.useContext(UserContext);
+  const [{ user }] = useGetUserById(loggedInUserId);
 
   const handleChange = (event) => {
     const player = players.find((player) => player.name === event.target.value);
@@ -40,7 +44,7 @@ export default function PlayerDropdown({ value, onChange }) {
       src={arrow}
     >
       <Option hidden value="default">
-        What&apos;s your name?
+        {user ? user.player.name : "What's your name?"}
       </Option>
       {loading && '...'}
       {error && <p>ohoh</p>}
