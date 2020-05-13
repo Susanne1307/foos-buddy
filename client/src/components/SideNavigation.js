@@ -62,6 +62,7 @@ export const MenuList = styled.ul`
   height: 55vh;
   width: 100%;
   margin-top: 3vh;
+  -webkit-tap-highlight-color: transparent;
 `;
 
 export const MenuListItems = styled.li`
@@ -118,6 +119,7 @@ const SideNavigation = () => {
     localStorage.removeItem('loggedInUserToken');
     setTimeout(function () {
       history.push(`/logout`);
+      setShowMenu(!showMenu);
     }, 500);
   };
 

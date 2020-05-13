@@ -14,7 +14,7 @@ const RoundButton = styled.button`
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  box-shadow: 0px 3px 8px ${(props) => props.theme.colors.textPrimaryHover};
+  box-shadow: 0px 1px 5px ${(props) => props.theme.colors.textPrimaryHover};
   outline: none;
   cursor: pointer;
   &:hover {

@@ -121,7 +121,7 @@ export default function Profile() {
 
   setTimeout(function () {
     setIsLoading(false);
-  }, 800);
+  }, 600);
 
   function goSearching() {
     setAnimated(!animated);

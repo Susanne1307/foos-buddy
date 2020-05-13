@@ -56,6 +56,7 @@ const SearchInfos = styled.div`
   flex-flow: column nowrap;
   justify-content: space-between;
   width: 80%;
+  margin-left: 10px;
 `;
 
 const SearchPicture = styled.img`
@@ -98,7 +99,7 @@ export default function Overview() {
 
   setTimeout(function () {
     setIsLoading(false);
-  }, 800);
+  }, 600);
 
   if (isLoading) {
     return (
