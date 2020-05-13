@@ -11,6 +11,7 @@ const Button = styled.button`
   border-radius: 30px;
   box-shadow: 0px 15px 30px ${(props) => props.theme.colors.shadow};
   outline: none;
+  -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   &:hover {
     color: ${(props) => props.theme.colors.textPrimaryHover};

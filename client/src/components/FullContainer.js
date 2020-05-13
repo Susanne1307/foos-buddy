@@ -7,6 +7,7 @@ const FullContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100%;
   overflow: scroll;
   background: ${(props) => {
     if (props.page === 'start') {
