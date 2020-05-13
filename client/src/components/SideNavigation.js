@@ -115,9 +115,11 @@ const SideNavigation = () => {
     setShowMenu(!showMenu);
   }
 
+  let timeOut;
   const handleLogout = () => {
     localStorage.removeItem('loggedInUserToken');
-    setTimeout(function () {
+    timeOut = setTimeout(function () {
+      clearTimeout(timeOut);
       history.push(`/logout`);
       setShowMenu(!showMenu);
     }, 500);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import FullContainer from '../components/FullContainer';
 import Header from '../components/Header';
@@ -96,9 +96,12 @@ export default function Overview() {
   const [{ searches, error, loading }] = useGetSearches();
   const [isLoading, setIsLoading] = useState(true);
 
-  setTimeout(function () {
-    setIsLoading(false);
-  }, 600);
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    return () => clearTimeout(timeOut);
+  }, []);
 
   if (isLoading) {
     return (
