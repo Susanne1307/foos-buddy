@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import AuthenticationContainer from '../components/AuthenticationContainer';
 import logo from '../assets/app_logo.svg';
@@ -18,9 +18,9 @@ export const AccountConfirmation = styled.div`
 
 function RegisterForm() {
   const history = useHistory();
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [createAccount, setCreateAccount] = React.useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [createAccount, setCreateAccount] = useState(true);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -36,7 +36,7 @@ function RegisterForm() {
         setCreateAccount(!createAccount);
         setTimeout(function () {
           history.push(`/profile`);
-        }, 1500);
+        }, 1200);
       }
     } catch (error) {
       alert(error.message);
