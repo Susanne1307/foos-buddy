@@ -1,10 +1,10 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { getTournaments } from '../api/getTournaments';
 
 export default function useGetTournaments() {
-  const [tournaments, setTournament] = React.useState(null);
-  const [error, setError] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
+  const [tournaments, setTournament] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function doGetTournaments() {
     try {
@@ -20,7 +20,7 @@ export default function useGetTournaments() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     doGetTournaments();
   }, []);
 

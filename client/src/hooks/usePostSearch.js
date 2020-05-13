@@ -1,10 +1,10 @@
-import React from 'react';
+import { useState } from 'react';
 import postSearch from '../api/postSearch';
 
 export default function usePostSearch() {
-  const [search, setSearch] = React.useState(null);
-  const [error, setError] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
+  const [search, setSearch] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function doPostSearch(user, tournament, discipline, position, message) {
     try {

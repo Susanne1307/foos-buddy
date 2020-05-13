@@ -1,10 +1,10 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { getPlayers } from '../api/getPlayers';
 
 export function useGetPlayers() {
-  const [players, setPlayers] = React.useState(null);
-  const [error, setError] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
+  const [players, setPlayers] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function doGetPlayers() {
     try {
@@ -20,7 +20,7 @@ export function useGetPlayers() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     doGetPlayers();
   }, []);
   return [{ players, error, loading }];
