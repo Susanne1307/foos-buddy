@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import UserProvider from './contexts/UserProvider';
-import { NavigationProvider } from './NavigationContext';
+import NavigationProvider from './contexts/NavigationProvider';
 import GlobalStyles from './GlobalStyles';
 import { ThemeProvider } from 'emotion-theming';
 import theme from './theme';

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { NavigationContext } from '../NavigationContext';
+import NavigationContext from '../contexts/NavigationContext';
 import UserContext from '../contexts/UserContext';
 import styled from '@emotion/styled';
 import ProfileImage from '../components/ProfileImage';
