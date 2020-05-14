@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import UserContext from '../contexts/UserContext';
 import styled from '@emotion/styled';
@@ -109,9 +109,12 @@ const Search = () => {
     history.push(`/searchlist`);
   }
 
-  setTimeout(function () {
-    setIsLoading(false);
-  }, 600);
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    return () => clearTimeout(timeOut);
+  }, []);
 
   if (isLoading) {
     return (

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavigationContext } from '../NavigationContext';
+import NavigationContext from '../contexts/NavigationContext';
 import styled from '@emotion/styled';
 import menu from '../assets/menu.svg';
 import header_logo from '../assets/header_logo.svg';

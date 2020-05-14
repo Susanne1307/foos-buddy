@@ -1,10 +1,10 @@
-import React from 'react';
+import { useState } from 'react';
 import { patchUser } from '../api/users';
 
 export default function usePatchUser() {
-  const [selectedPlayer, setSelectedPlayer] = React.useState(null);
-  const [error, setError] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function doPatchUser(userId, player) {
     try {

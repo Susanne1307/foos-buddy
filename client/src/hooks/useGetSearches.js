@@ -1,10 +1,10 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { getSearches } from '../api/getSearches';
 
 export function useGetSearches() {
-  const [searches, setSearches] = React.useState(null);
-  const [error, setError] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
+  const [searches, setSearches] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function doGetSearches() {
     try {
@@ -20,7 +20,7 @@ export function useGetSearches() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     doGetSearches();
   }, []);
   return [{ searches, error, loading }];

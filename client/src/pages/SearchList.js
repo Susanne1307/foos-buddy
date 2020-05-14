@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import FullContainer from '../components/FullContainer';
 import Header from '../components/Header';
@@ -18,7 +18,6 @@ const SearchList = styled.div`
 const SearchSection = styled.div`
   display: flex;
   justify-content: space-around;
-
   > * {
     margin: 10px;
   }
@@ -95,11 +94,14 @@ const Message = styled.div`
 
 export default function Overview() {
   const [{ searches, error, loading }] = useGetSearches();
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  setTimeout(function () {
-    setIsLoading(false);
-  }, 600);
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    return () => clearTimeout(timeOut);
+  }, []);
 
   if (isLoading) {
     return (

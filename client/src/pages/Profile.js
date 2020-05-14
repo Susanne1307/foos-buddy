@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import UserContext from '../contexts/UserContext';
@@ -111,20 +111,25 @@ export default function Profile() {
     setClickable(true);
   }
 
-  const reg = RegExp(/(?<=,\s).*/);
-  const playerName = player ? player.name.match(reg) : '';
+  const reg = new RegExp(/.+,\s(\w+)/);
+  const playerName = player ? player.name.match(reg)[1] : '';
 
   const showWelcome = () => {
     setIsVisible(false);
   };
 
-  setTimeout(function () {
-    setIsLoading(false);
-  }, 600);
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    return () => clearTimeout(timeOut);
+  }, []);
 
+  let timeOut;
   function goSearching() {
     setAnimated(!animated);
-    setTimeout(function () {
+    timeOut = setTimeout(() => {
+      clearTimeout(timeOut);
       history.push(`/search`);
     }, 1200);
   }

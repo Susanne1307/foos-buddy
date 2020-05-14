@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from '@emotion/styled';
 import FullContainer from '../components/FullContainer';
@@ -19,15 +19,18 @@ const LoginAgain = styled(Button)`
 `;
 
 const Logout = () => {
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
   const handleClick = () => {
     history.push(`/login`);
   };
 
-  setTimeout(function () {
-    setIsLoading(false);
-  }, 800);
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+    return () => clearTimeout(timeOut);
+  }, []);
 
   if (isLoading) {
     return <FullContainer></FullContainer>;

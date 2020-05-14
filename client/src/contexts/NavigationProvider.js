@@ -1,9 +1,8 @@
-import React, { useState, createContext } from 'react';
+import React, { useState } from 'react';
+import NavigationContext from './NavigationContext';
 import PropTypes from 'prop-types';
 
-export const NavigationContext = createContext();
-
-export const NavigationProvider = (props) => {
+const NavigationProvider = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <NavigationContext.Provider value={[showMenu, setShowMenu]}>
@@ -11,6 +10,8 @@ export const NavigationProvider = (props) => {
     </NavigationContext.Provider>
   );
 };
+
+export default NavigationProvider;
 
 NavigationProvider.propTypes = {
   children: PropTypes.node,
