@@ -112,8 +112,8 @@ export default function Profile() {
     setClickable(true);
   }
 
-  const reg = RegExp(/(?<=,\s).*/);
-  const playerName = player ? player.name.match(reg) : '';
+  const reg = new RegExp(/.+,\s(\w+)/);
+  const playerName = player ? player.name.match(reg)[1] : '';
 
   const showWelcome = () => {
     setIsVisible(false);
